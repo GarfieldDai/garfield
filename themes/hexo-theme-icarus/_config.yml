@@ -9,7 +9,7 @@ menu:
 # Customize
 customize:
     logo:
-        enabled: false
+        enabled: true
         width: 40
         height: 40
         url: images/logo.png
@@ -39,8 +39,8 @@ widgets:
     - category
     - archive
     - tag
-    - tagcloud
-    - links
+    # - tagcloud
+    # - links
 
 # Search
 search:
