@@ -11,4 +11,4 @@ E-mail: **dai.hai@foxmail.com**
 
 如果觉得博客内容写的不错就请我喝一杯咖啡作为鼓励吧~
 
-![](/images/about/zhifu.jpg)
+![](/images/About/zhifu.jpg)

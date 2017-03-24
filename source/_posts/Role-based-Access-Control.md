@@ -3,9 +3,9 @@ title: 基于角色的权限管理
 date: 2017-03-20 14:26:14
 categories: Security
 tags: RBAC
-thumbnail: "/images/RBAC/RBAC05.png"
+thumbnail: "/images/Security/RBAC/RBAC05.png"
 ---
-![](/images/RBAC/RBAC05.png)
+![](/images/Security/RBAC/RBAC05.png)
 
 ## 目的
 理解什么是基于角色的权限管理（RBAC）？
@@ -28,21 +28,21 @@ thumbnail: "/images/RBAC/RBAC05.png"
 * 职责分离
 
 ### 核心架构
-![RBAC01](/images/RBAC/RBAC01.png)
+![RBAC01](/images/Security/RBAC/RBAC01.png)
 通常一个机构都会给每个人分配不同的职位，不同职位有不同的工作范围。职位其实就是角色，工作范围也代表了你的操作权限。如图 *RBAC01* 所示，主体，角色和权限其实是多对多的关系。
 
-![RBAC02](/images/RBAC/RBAC02.png)
+![RBAC02](/images/Security/RBAC/RBAC02.png)
 不同的职位代表了不同的操作权限。
 
 ### 角色的继承
-![RBAC03](/images/RBAC/RBAC03.png)
+![RBAC03](/images/Security/RBAC/RBAC03.png)
 通常来说，角色是有继承关系的，比如一个部门经理的权限是包含了该部门普通员工的权限。
 
-![RBAC04](/images/RBAC/RBAC04.png)
+![RBAC04](/images/Security/RBAC/RBAC04.png)
 举个栗子，在一个软件部门里面，某个人被分配到该部门，他有进入该部门的最低权限，然后他被分配到 TeamOne 做开发，那么他就有该小组的权限和做开发的权限。在该部门里面，Manager有该部门的所有的权限。
 
 ### 职责分离
-![RBAC05](/images/RBAC/RBAC05.png)
+![RBAC05](/images/Security/RBAC/RBAC05.png)
 职责分离（Separation of duties）其实就是在用户和角色之间加一层约束。简单的说，就是在同一个球场上，不会有一个人既是球员又是裁判。
 
 ## 使用场景
