@@ -3,7 +3,9 @@ title: Sahi 快速入门
 date: 2017-03-23 17:27:07
 categories: AutomationTesting
 tags: Sahi
+thumbnail: "/images/Automation/Sahi/Sahi-Pro-Logo.png"
 ---
+![](/images/Automation/Sahi/sahi-works-out-of-the-box.png)
 
 ## 目的
 使用 Sahi Pro 进行自动化测试。
