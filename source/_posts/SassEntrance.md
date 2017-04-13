@@ -1,9 +1,12 @@
 ---
 title: Sass 快速入门
 date: 2017-04-13 16:56:54
-categories: SASS
-tags: CSS
+categories: CSS
+tags: SASS
+thumbnail: "/images/CSS/SASS/SASS.png"
 ---
+![](images/CSS/SASS/SASS.png)
+
 ## 目的
 如何在 Linux Ubuntu 16.4 LTS 环境下安装 Sass，以及如何使用 Sass。
 
