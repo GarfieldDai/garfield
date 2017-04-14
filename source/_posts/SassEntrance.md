@@ -10,6 +10,8 @@ thumbnail: "/images/CSS/SASS/SASS.png"
 ## 目的
 如何在 Linux Ubuntu 16.4 LTS 环境下安装 Sass，以及如何使用 Sass。
 
+<!--more-->
+
 ## 准备工作
 1. 首先需要安装 Ruby, 使用 Ubuntu apt package manager 进行安装。
   `$ sudo apt-get install ruby-full`

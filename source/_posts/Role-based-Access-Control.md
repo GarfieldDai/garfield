@@ -10,6 +10,8 @@ thumbnail: "/images/Security/RBAC/RBAC05.png"
 ## 目的
 理解什么是基于角色的权限管理（RBAC）？
 
+<!--more-->
+
 ## 简介
 目前单系统应用中，基于角色的权限管理 *(Role-based Access Control)* 被奉为是最佳实践。
 

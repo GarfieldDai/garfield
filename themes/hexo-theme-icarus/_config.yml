@@ -26,12 +26,12 @@ customize:
     thumbnail: true # enable posts thumbnail, options: true, false
     favicon: # path to favicon
     social_links:
-        github: /
+        #github: /
         #twitter: /
         #facebook: /
         #dribbble: /
         #rss: /
-    social_link_tooltip: true # enable the social link tooltip, options: true, false
+    social_link_tooltip: false # enable the social link tooltip, options: true, false
 
 # Widgets
 widgets:

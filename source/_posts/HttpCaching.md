@@ -9,6 +9,8 @@ thumbnail: "/images/Http/Cache/HttpCaching01.jpg"
 ## 目的
 理解什么是 Http 缓存。
 
+<!--more-->
+
 ## 简介
 在 Web 应用开发中，用户对网页的响应速度要求极高。如果每次刷新页面都要从服务器里面重新拿网页资源（HTML, CSS, Javascript, Image, Video, etc），不仅会影响网页的响应速度，而且也很占用服务器宝贵的带宽资源。
 

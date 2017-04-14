@@ -10,6 +10,8 @@ thumbnail: "/images/Automation/Sahi/Sahi-Pro-Logo.png"
 ## 目的
 使用 Sahi Pro 进行自动化测试。
 
+<!--more-->
+
 ## 准备工作
 * 需要 Java 环境1.5版本以上。
 * 在 [Sahi](http://sahipro.com/downloads-archive/) 官网下载安装包。

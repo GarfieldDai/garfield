@@ -10,6 +10,8 @@ thumbnail: "/images/Linux/Ubuntu/Ubuntu.png"
 ## 目的
 本文章主要介绍一些在 Ubuntu 操作系统里面常用的一些工具，这些工具在日常的开发和学习中，能够给你很大的便利。本系统版本为 Ubuntu 16.04 LTS 64位 英文版。
 
+<!--more-->
+
 ### 截图工具 （ Screenshot ）
 1. 点击左侧工具栏的 Ubuntu 图标，输入 Screenshot 即可找到软件。
 2. 该工具提供了3种不同选项，抓取全屏、抓取当前窗口和随意截屏。
