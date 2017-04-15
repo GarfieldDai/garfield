@@ -25,11 +25,17 @@ thumbnail: "/images/Git/git.png"
 
 ### 修改操作
   `$ git status`
-  列出所有新建的或者修改过的文件
+  列出所有新建的或者修改过的文件详细信息
+  `$ git status -s`
+  列出所有新建的或者修改过的文件精简信息
   `$ git diff`
   查看未在缓存区的文件差异
   `$ git add [file]`
   添加新建或修改后的文件到缓存区
+  `$ git add .`
+  递归添加文件
+  `$ git add *`
+  添加同目录的所有文件
   `$ git diff --staged`
   查看已经在缓存区的文件差异
   `$ git reset [file]`
