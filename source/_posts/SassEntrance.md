@@ -23,17 +23,219 @@ thumbnail: "/images/CSS/SASS/SASS.png"
   `sass -v`
 
 ## 简介
-Sass 其实是 CSS 的预编译器，主要对 CSS 进行预编译。随着项目的，CSS 会变得臃肿而且冗余，代码不断增加，重复代码有增不减，后期代码维护复杂而且困难，甚至牵一发而动全身。为了解决这个问题，Sass 能够为 CSS 提供语法特性：变量（variables），嵌套（nesting），mixins，inheritance（继承）。
+Sass 其实是 CSS 的预编译器，主要对 CSS 进行预编译。Sass 会让CSS的编写变得更加简便，能够更好得进行维护，它为 CSS 提供了语法特性：变量（variables），嵌套（nesting），mixins，继承 (inheritance)等。
 
 ## 内容
 
 ### 预编译
-  input.scss 是你编写的 Sass 文件，output.css 是编译后的 css 文件。
-  Sass 有两种格式，一种为 .sass, 另一种为 .scss，后者格式跟 css 一样，这里使用后者的格式进行讲解。
   `sass input.scss output.css`
+  input.scss 是你编写的 Sass 文件，output.css 是编译后的 CSS 文件。
+  Sass 有两种格式，一种为 .sass, 另一种为 .scss，后者格式跟 CSS 一样，这里使用后者的格式进行讲解。
 
 ### 变量（Variables）
-  Sass 使用美元符号 $ 进行变量的声明。   
+Sass 使用美元符号 $ 进行变量的声明。
+
+Sass 源代码：
+
+    $font-stack:    Helvetica, sans-serif;
+    $primary-color: #333;
+
+    body {
+      font: 100% $font-stack;
+      color: $primary-color;
+    }
+
+编译后代码：
+
+    body {
+      font: 100% Helvetica, sans-serif;
+      color: #333;
+    }
+
+### 嵌套 (Nesting)
+
+Sass 源代码：
+
+    nav {
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      li { display: inline-block; }
+
+      a {
+        display: block;
+        padding: 6px 12px;
+        text-decoration: none;
+      }
+    }
+
+编译后代码：
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav li {
+      display: inline-block;
+    }
+
+    nav a {
+      display: block;
+      padding: 6px 12px;
+      text-decoration: none;
+    }
+
+### Partials
+为了方便代码维护，你可以将你得代码模块化。创建一个文件`_partial.scss`，文件需要用下划线开头，这样做的目的是告诉Sass你这个文件只是一个模块文件，并且Sass不会去编译这个文件。只有在其他文件你使用`@import`把当前的文件导入后，会自动将文件编译到导入的文件里面。
+
+### 导入（Import）
+CSS 同样也有导入功能，可以让你的代码精简并且更好维护。唯一的缺点就是每次使用 `@import`的时候都需要创建http请求。Sass 在此基础之上克服了这个缺点，它会在编译的时候，把引用的代码一并打包到用一个文件。
+下面有两个文件，目的是把`_reset.scss` 导入到`base.scss`。
+
+Sass 源代码：
+
+    // \_reset.scss
+
+    html,
+    body,
+    ul,
+    ol {
+       margin: 0;
+       padding: 0;
+    }
+
+    // base.scss
+
+    @import 'reset';
+
+    body {
+      font: 100% Helvetica, sans-serif;
+      background-color: #efefef;
+    }
+
+你可以看到我们使用 `@import 'reset'` 的时候，并没有加上下划线和后缀名，因为Sass会自动进行识别。
+
+编译后代码：
+
+    html, body, ul, ol {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font: 100% Helvetica, sans-serif;
+      background-color: #efefef;
+    }
+
+### Mixins
+这个功能方便你重用代码块，你也可以传递参数给你的代码块。
+使用`@mixin`进行声明代码块，使用`$radius`声明参数，使用`@include`进行引用。
+
+Sass 源代码：
+
+    @mixin border-radius($radius) {
+      -webkit-border-radius: $radius;
+         -moz-border-radius: $radius;
+          -ms-border-radius: $radius;
+              border-radius: $radius;
+    }
+
+    .box { @include border-radius(10px); }
+
+编译后代码：
+
+    .box {
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      border-radius: 10px;
+    }
+
+### 继承（Extend/Inheritance）
+`@extend` 能够让你的代码重用。
+
+Sass 源代码：
+
+    .message {
+      border: 1px solid #ccc;
+      padding: 10px;
+      color: #333;
+    }
+
+    .success {
+      @extend .message;
+      border-color: green;
+    }
+
+    .error {
+      @extend .message;
+      border-color: red;
+    }
+
+    .warning {
+      @extend .message;
+      border-color: yellow;
+    }
+
+编译后代码：
+
+    .message, .success, .error, .warning {
+      border: 1px solid #cccccc;
+      padding: 10px;
+      color: #333;
+    }
+
+    .success {
+      border-color: green;
+    }
+
+    .error {
+      border-color: red;
+    }
+
+    .warning {
+      border-color: yellow;
+    }
+
+### 运算符（Operators）
+Sass 支持 +, -, \*, /, % 运算。
+
+Sass 源代码：
+
+    .container { width: 100%; }
+
+    article[role="main"] {
+      float: left;
+      width: 600px / 960px * 100%;
+    }
+
+    aside[role="complementary"] {
+      float: right;
+      width: 300px / 960px * 100%;
+    }
+
+编译后代码：
+
+    .container {
+      width: 100%;
+    }
+
+    article[role="main"] {
+      float: left;
+      width: 62.5%;
+    }
+
+    aside[role="complementary"] {
+      float: right;
+      width: 31.25%;
+    }
+
+
 
 参考文献
 [Sass official guide](http://sass-lang.com/guide)
