@@ -20,7 +20,7 @@ customize:
         author: Garfield Dai
         author_title: Full-Stack Developer
         location: ZhuHai, China
-        follow: /
+        follow: /about
     highlight: monokai
     sidebar: right # sidebar position, options: left, right
     thumbnail: true # enable posts thumbnail, options: true, false
