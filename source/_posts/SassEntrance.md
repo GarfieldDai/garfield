@@ -23,7 +23,8 @@ thumbnail: "/images/CSS/SASS/SASS.png"
   `sass -v`
 
 ## 简介
-Sass 其实是 CSS 的预编译器，主要对 CSS 进行预编译。Sass 会让CSS的编写变得更加简便，能够更好得进行维护，它为 CSS 提供了语法特性：变量（variables），嵌套（nesting），mixins，继承 (inheritance)等。
+Sass 其实是 CSS 的预编译器，主要对 CSS 进行预编译。Sass 会让CSS的编写变得更加简便，能够更好得进行维护，
+它为 CSS 提供了语法特性：变量（variables），嵌套（nesting），mixins，继承 (inheritance)等。
 
 ## 内容
 
