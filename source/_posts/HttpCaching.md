@@ -3,8 +3,9 @@ title: Http 缓存
 date: 2017-04-10 11:14:00
 tags: Cache
 categories: Http
-thumbnail: "/images/Http/Cache/HttpCaching01.jpg"
+thumbnail: "/images/Http/Http.jpg"
 ---
+![](/images/Http/Http.jpg)
 
 ## 目的
 理解什么是 Http 缓存。
