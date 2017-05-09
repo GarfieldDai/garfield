@@ -236,7 +236,19 @@ Sass 源代码：
       width: 31.25%;
     }
 
+## 常用命令
+监听单个文件
+`sass --watch style.scss:style.css`
 
+监听文件夹
+`sass --watch sassFileDirectory:cssFileDirectory`
+
+css文件转成sass/scss文件
+`sass-convert style.css style.sass`
+`sass-convert style.css style.scss`
+
+编译后的css格式有四种取值：nested，expanded，compact，compressed
+`sass --watch style.scss:style.css --style compact`
 
 参考文献
 [Sass official guide](http://sass-lang.com/guide)
