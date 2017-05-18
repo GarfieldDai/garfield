@@ -250,5 +250,5 @@ css文件转成sass/scss文件
 编译后的css格式有四种取值：nested，expanded，compact，compressed
 `sass --watch style.scss:style.css --style compact`
 
-参考文献
+参考资料
 [Sass official guide](http://sass-lang.com/guide)
