@@ -66,68 +66,68 @@ bower install angular-sanitize
 ```
 'use strict';
 angular.module('myApp',
-		[
-			"ngSanitize",
-			"com.2fdevs.videogular",
-			"com.2fdevs.videogular.plugins.controls",
-			"com.2fdevs.videogular.plugins.overlayplay",
-			"com.2fdevs.videogular.plugins.poster"
-		]
-	)
-	.controller('HomeCtrl',
-		["$sce", function ($sce) {
-			this.config = {
-				sources: [
-					{src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.mp4"), type: "video/mp4"},
-					{src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.webm"), type: "video/webm"},
-					{src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.ogg"), type: "video/ogg"}
-				],
-				tracks: [
-					{
-						src: "http://www.videogular.com/assets/subs/pale-blue-dot.vtt",
-						kind: "subtitles",
-						srclang: "en",
-						label: "English",
-						default: ""
-					}
-				],
-				theme: "bower_components/videogular-themes-default/videogular.css",
-				plugins: {
-					poster: "http://www.videogular.com/assets/images/videogular.png"
-				}
-			};
-		}]
-	);
+    [
+      "ngSanitize",
+      "com.2fdevs.videogular",
+      "com.2fdevs.videogular.plugins.controls",
+      "com.2fdevs.videogular.plugins.overlayplay",
+      "com.2fdevs.videogular.plugins.poster"
+    ]
+  )
+  .controller('HomeCtrl',
+    ["$sce", function ($sce) {
+      this.config = {
+        sources: [
+          {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.mp4"), type: "video/mp4"},
+          {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.webm"), type: "video/webm"},
+          {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.ogg"), type: "video/ogg"}
+        ],
+        tracks: [
+          {
+            src: "http://www.videogular.com/assets/subs/pale-blue-dot.vtt",
+            kind: "subtitles",
+            srclang: "en",
+            label: "English",
+            default: ""
+          }
+        ],
+        theme: "bower_components/videogular-themes-default/videogular.css",
+        plugins: {
+          poster: "http://www.videogular.com/assets/images/videogular.png"
+        }
+      };
+    }]
+  );
 ```
 ### 创建HTML代码
 为了使用Videogular，你可以使用`videogular`标签。
 `vg-media`将会根据controller里面设置的`source`和`tracks`变量创建视频标签。
 ```
 <div ng-app="myApp">
-	<div ng-controller="HomeCtrl as controller" class="videogular-container">
-		<videogular vg-theme="controller.config.theme">
-			<vg-media vg-src="controller.config.sources"
-					  vg-tracks="controller.config.tracks">
-			</vg-media>
+  <div ng-controller="HomeCtrl as controller" class="videogular-container">
+    <videogular vg-theme="controller.config.theme">
+      <vg-media vg-src="controller.config.sources"
+            vg-tracks="controller.config.tracks">
+      </vg-media>
 
-			<vg-controls>
-				<vg-play-pause-button></vg-play-pause-button>
-				<vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
-				<vg-scrub-bar>
-					<vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-				</vg-scrub-bar>
-				<vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
-				<vg-volume>
-					<vg-mute-button></vg-mute-button>
-					<vg-volume-bar></vg-volume-bar>
-				</vg-volume>
-				<vg-fullscreen-button></vg-fullscreen-button>
-			</vg-controls>
+      <vg-controls>
+        <vg-play-pause-button></vg-play-pause-button>
+        <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+        <vg-scrub-bar>
+          <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+        </vg-scrub-bar>
+        <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+        <vg-volume>
+          <vg-mute-button></vg-mute-button>
+          <vg-volume-bar></vg-volume-bar>
+        </vg-volume>
+        <vg-fullscreen-button></vg-fullscreen-button>
+      </vg-controls>
 
-			<vg-overlay-play></vg-overlay-play>
-			<vg-poster vg-url='controller.config.plugins.poster'></vg-poster>
-		</videogular>
-	</div>
+      <vg-overlay-play></vg-overlay-play>
+      <vg-poster vg-url='controller.config.plugins.poster'></vg-poster>
+    </videogular>
+  </div>
 </div>
 ```
 
@@ -135,31 +135,31 @@ angular.module('myApp',
 以下的样式能够让你的视频保持16：9的比例。
 ```
 .videogular-container {
-	width: 100%;
-	height: 320px;
-	margin: auto;
-	overflow: hidden;
+  width: 100%;
+  height: 320px;
+  margin: auto;
+  overflow: hidden;
 }
 
 @media (min-width: 1200px) {
-	.videogular-container {
-		width: 1170px;
-		height: 658.125px;
-	}
+  .videogular-container {
+    width: 1170px;
+    height: 658.125px;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-	.videogular-container {
-		width: 940px;
-		height: 528.75px;
-	}
+  .videogular-container {
+    width: 940px;
+    height: 528.75px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-	.videogular-container {
-		width: 728px;
-		height: 409.5px;
-	}
+  .videogular-container {
+    width: 728px;
+    height: 409.5px;
+  }
 }
 ```
 关于Videogular的基本配置就完成了。
