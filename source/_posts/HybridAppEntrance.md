@@ -23,13 +23,19 @@ Ionic 提供了移动应用开发的前端框架，本篇章使用 Ionic v1 Fram
 1. 安装 NodeJS。
 
 2. 安装 Cordova 和 Ionic。
-  `npm install -g cordova ionic`
+  ```
+  npm install -g cordova ionic
+  ```
 
 3. 初始化项目,命名为 ‘myApp’。
-  `ionic start myApp tabs`
+  ```
+  ionic start myApp tabs
+  ```
 
 4. 本地浏览器测试项目运行。
-  `ionic serve`
+  ```
+  ionic serve
+  ```
 
 ### 安卓应用开发配置
 1. 配置 JDK 和 Android SDK。
@@ -45,10 +51,16 @@ Ionic 提供了移动应用开发的前端框架，本篇章使用 Ionic v1 Fram
     + Tools
 
 4. 添加安卓开发平台。
-  `Cordova platform add android --save`
+  ```
+  Cordova platform add android --save
+  ```
 
 5. 构建安卓项目。
-  `Cordova build android --verbose`
+  ```
+  Cordova build android --verbose
+  ```
 
 6. 电脑运行安卓虚拟机。
-  `Cordova run android`
+  ```
+  Cordova run android
+  ```

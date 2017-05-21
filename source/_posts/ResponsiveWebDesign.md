@@ -32,7 +32,9 @@ thumbnail: "/images/CSS/RWD/RWD.jpg"
 
 ### 元信息（Meta）
 最后，还要加上下面这句话。这句话就是告诉浏览器禁止当前页面进行缩放。
-`<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
 
 参考资料
 [Using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
