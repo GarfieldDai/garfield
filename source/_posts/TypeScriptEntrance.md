@@ -1,5 +1,5 @@
 ---
-title: TypeScript 快速入门
+title: TypeScript 系列教程一
 date: 2017-05-21 21:28:50
 categories: JavaScript
 tags: TypeScript
@@ -8,7 +8,7 @@ thumbnail: "/images/JavaScript/typescript/typescript.png"
 ![](/images/JavaScript/typescript/typescript.png)
 
 ## 目的
-如何在Ubuntu系统环境下安装和使用TypeScript。
+如何配置TypeScript环境，以及在Ubunt系统下配置Atom编辑器。
 
 <!--more-->
 
@@ -66,3 +66,6 @@ $ sudo apm install linter
 [TypeScript official site](http://www.typescriptlang.org/)
 [TypeScript wikipedia](https://en.wikipedia.org/wiki/TypeScript)
 [atom-typescript](https://atom.io/packages/atom-typescript)
+[atom-runner](https://atom.io/packages/atom-runner)
+[script](https://atom.io/packages/script)
+[node-debugger package](https://atom.io/packages/node-debugger)
