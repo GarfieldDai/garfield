@@ -37,35 +37,43 @@ tsc helloworld.ts
 + [Vim](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support#vim)
 
 ### Atom
-1. 下载Atom,并用命令行进行安装。
+1. 下载Atom,并用命令行进行安装,Debian Linux (Ubuntu) 仅支持64位操作系统。
 ```
-$ sudo dpkg -i atom-amd64.deb
+$ sudo dpkg --install atom-amd64.deb
 ```
-2. 安装Atom插件，前提是已经安装了Git。你也可以不安装，直接编辑`.ts`文件进行开发。
+2. 安装 [Script](https://atom.io/packages/script)插件，可以在Atom编辑器通过快捷键`shift-ctrl-b`执行js代码。
+```
+$ sudo apm install script
+```
+3. 安装Atom TypeScript插件，前提是已经安装了Git。你也可以不安装，直接编辑`.ts`文件进行开发。
 ```
 $ sudo apm install atom-typescript
 ```
-3. 重新启动Atom,然后会提示你安装相应的依赖包，选择安装。如果没有提示，可以手动进行安装执行下面的命令。
+4. 重新启动Atom,然后会提示你安装相应的依赖包，选择安装。如果没有提示，可以手动进行安装执行下面的命令。
 ```
 $ sudo apm install linter
 ```
-
 该插件提供了以下的功能。
 + 自动补全（Autocomplete）: `ctrl+space`，使用`tab`进行选择。
 + 语法校验（Live error analysis）
 + 信息提示（Type information on hover）
-+ 自动编译（Compile on save）: 需要在`tsconfig.json`配置`"compileOnSave": true`。
 + 定位声明位置（Goto Declaration）`F12`。
 + 查询引用（Find References）: `shift+F12`。
 + 代码格式化（Format Code）: `ctrl+alt+l`。
 + 重命名（Rename refactoring）
-+ 等等
-
++ 保存后编译（Compile on save）: 能够帮助你保存TypeScript后，自动编译为js代码，需要在`tsconfig.json`配置`"compileOnSave": true`。你可以在项目根目录创建`tsconfig.json`,复制下面的代码。
+```
+{
+   "compileOnSave": true,
+   "compilerOptions": {
+       "noImplicitAny" : true
+   }
+}
+```
 
 参考资料
 [TypeScript official site](http://www.typescriptlang.org/)
 [TypeScript wikipedia](https://en.wikipedia.org/wiki/TypeScript)
 [atom-typescript](https://atom.io/packages/atom-typescript)
-[atom-runner](https://atom.io/packages/atom-runner)
+[tsconfig.json](http://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 [script](https://atom.io/packages/script)
-[node-debugger package](https://atom.io/packages/node-debugger)
