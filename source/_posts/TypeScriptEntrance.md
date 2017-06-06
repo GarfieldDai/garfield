@@ -1,6 +1,6 @@
 ---
 title: TypeScript 系列教程一
-date: 2017-05-21 21:28:50
+date: 2017-05-20 21:28:50
 categories: JavaScript
 tags: TypeScript
 thumbnail: "/images/JavaScript/typescript/typescript.png"
