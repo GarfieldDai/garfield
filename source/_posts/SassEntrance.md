@@ -45,7 +45,7 @@ Sass 其实是 CSS 的预编译器，主要对 CSS 进行预编译。Sass 会让
 Sass 使用美元符号 $ 进行变量的声明。
 
 Sass 源代码：
-```
+```scss
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
 
@@ -56,7 +56,7 @@ body {
 ```
 
 编译后代码：
-```
+```css
 body {
   font: 100% Helvetica, sans-serif;
   color: #333;
@@ -65,7 +65,7 @@ body {
 ### 嵌套 (Nesting)
 
 Sass 源代码：
-```
+```scss
 nav {
   ul {
     margin: 0;
@@ -83,7 +83,7 @@ nav {
 }
 ```
 编译后代码：
-```
+```css
 nav ul {
   margin: 0;
   padding: 0;
@@ -108,7 +108,7 @@ CSS 同样也有导入功能，可以让你的代码精简并且更好维护。�
 下面有两个文件，目的是把`_reset.scss` 合并到`base.scss`。
 
 Sass 源代码：
-```
+```scss
 // \_reset.scss
 
 html,
@@ -131,7 +131,7 @@ body {
 你可以看到我们使用 `@import 'reset'` 的时候，并没有加上下划线和后缀名，因为Sass会自动进行识别。
 
 编译后代码：
-```
+```css
 html, body, ul, ol {
   margin: 0;
   padding: 0;
@@ -147,7 +147,7 @@ body {
 使用`@mixin`进行声明代码块，使用`$radius`声明参数，使用`@include`进行引用。
 
 Sass 源代码：
-```
+```scss
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
@@ -158,7 +158,7 @@ Sass 源代码：
 .box { @include border-radius(10px); }
 ```
 编译后代码：
-```
+```css
 .box {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -170,7 +170,7 @@ Sass 源代码：
 `@extend` 能够让你的代码进行继承。
 
 Sass 源代码：
-```
+```scss
 .message {
   border: 1px solid #ccc;
   padding: 10px;
@@ -193,7 +193,7 @@ Sass 源代码：
 }
 ```
 编译后代码：
-```
+```css
 .message, .success, .error, .warning {
   border: 1px solid #cccccc;
   padding: 10px;
@@ -216,7 +216,7 @@ Sass 源代码：
 Sass 支持 +, -, \*, /, % 运算。
 
 Sass 源代码：
-```
+```scss
 .container { width: 100%; }
 
 article[role="main"] {
@@ -230,7 +230,7 @@ aside[role="complementary"] {
 }
 ```
 编译后代码：
-```
+```css
 .container {
   width: 100%;
 }

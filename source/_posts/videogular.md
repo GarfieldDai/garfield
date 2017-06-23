@@ -51,7 +51,7 @@ bower install angular-sanitize
 ```
 ### First blood!
 新建`index.html`文件，并且引入相关文件。新建`main.js`文件，放置JS代码。
-```
+```html
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 <script src="bower_components/videogular/videogular.js"></script>
@@ -63,7 +63,7 @@ bower install angular-sanitize
 ```
 ### AngularJS Code
 打开`main.js`文件，添加下面代码。
-```
+```javascript
 'use strict';
 angular.module('myApp',
     [
@@ -102,7 +102,7 @@ angular.module('myApp',
 ### 创建HTML代码
 为了使用Videogular，你可以使用`videogular`标签。
 `vg-media`将会根据controller里面设置的`source`和`tracks`变量创建视频标签。
-```
+```html
 <div ng-app="myApp">
   <div ng-controller="HomeCtrl as controller" class="videogular-container">
     <videogular vg-theme="controller.config.theme">
@@ -133,7 +133,7 @@ angular.module('myApp',
 
 ### 创建响应式布局
 以下的样式能够让你的视频保持16：9的比例。
-```
+```css
 .videogular-container {
   width: 100%;
   height: 320px;
