@@ -25,3 +25,13 @@ thumbnail: "/images/Linux/Ubuntu/Ubuntu.png"
 1. 点击左侧工具栏的 Ubuntu 图标，输入 Remmina Remote Desktop Client 即可找到软件。
 2. 打开后，点击 New 弹出设置窗口。
 3. 设置 Name 给当前连接命名，设置连接协议 Protocol 为 SSH-Secure Shell, Server 为你的服务器IP地址，User name 为主机登录账户，选择 Password，然后点击 Connect 后输入密码即可连接到远程服务器。
+
+### 左侧任务栏切换
+1. 将左侧的任务栏切换到底部，跟Window一致。
+```bash
+gsettings set com.canonical.Unity.Launcher launcher-position Bottom
+```
+2. 恢复左侧任务栏。
+```bash
+gsettings set com.canonical.Unity.Launcher launcher-position Leftd
+```
