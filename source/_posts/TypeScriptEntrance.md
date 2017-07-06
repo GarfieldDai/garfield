@@ -8,7 +8,7 @@ thumbnail: "/images/JavaScript/typescript/typescript.png"
 ![](/images/JavaScript/typescript/typescript.png)
 
 ## 目的
-如何配置TypeScript环境，以及在Ubunt系统下配置Atom编辑器。
+如何配置TypeScript环境，以及在Ubuntu系统下配置Atom编辑器。
 
 <!--more-->
 
