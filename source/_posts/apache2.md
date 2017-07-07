@@ -26,9 +26,31 @@ $ sudo apt-get install apache2
 
 3. Apache web server 系统安装目录`/etc/apache2/`。
 
-4. `/etc/apache2/apache2.conf` 是主配置文件，它引用了所有的配置文件，可以在这里设置默认的资源路径。
+4. `/etc/apache2/apache2.conf` 是主配置文件，它引用了所有的配置文件。
 
-5. `/etc/apache2/ports.conf` 设置端口号。
+5. `/etc/apache2/sites-available/000-default.conf`可以配置资源路径。
+
+6. `/etc/apache2/ports.conf` 设置端口号。
+
+7. Apache在Ubuntu系统下的操作需要加前缀才能执行`/etc/init.d/`。
+```bash
+# 查看服务器状态
+$ /etc/init.d/apache2 status
+# 启动服务器
+$ /etc/init.d/apache2 start
+# 重启服务器
+$ /etc/init.d/apache2 restart
+# 中断请求服务，停止服务器
+$ /etc/init.d/apache2 stop
+# 完成当前所有请求服务后，停止服务器
+$ /etc/init.d/apache2 graceful-stop
+# 重新加载配置文件
+$ /etc/init.d/apache2 reload
+# 和reload一样
+$ /etc/init.d/apache2 force-reload
+```
 
 参考资料
 [Ask Ubuntu](https://help.ubuntu.com/lts/serverguide/httpd.html)
+[Apache official site](https://httpd.apache.org/docs/2.4/stopping.html)
+[The difference between reload and force-reload](https://serverfault.com/questions/363409/difference-between-apache-reload-and-force-reload)
