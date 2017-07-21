@@ -39,6 +39,10 @@ $ composer global require "laravel/installer"
 ```
 export PATH=/home/garfield/.config/composer/vendor/bin:$PATH
 ```
+2. 让修改后的配置文件立即生效。
+```bash
+$ source /home/garfield/.bashrc
+```
 3. 配置完毕后，查看Laravel信息。
 ```bash
 $ laravel -v
@@ -48,11 +52,19 @@ $ laravel -v
 $ laravel new projectName
 ```
 5. 如果遇到下面的php zip模块异常，执行命令安装。
->[RuntimeException]                                                        
->The Zip PHP extension is not installed. Please install it and try again.
-
 ```bash
+# [RuntimeException]                                                        
+# The Zip PHP extension is not installed. Please install it and try again.
 $ sudo apt install php-zip
+```
+6. 如果遇到下面php mbstring模块异常，执行命令安装。
+```bash
+# laravel/framework v5.4.28 requires ext-mbstring * -> the requested PHP extension mbstring is missing from your system.
+$ sudo apt install php-mbstring
+```
+7. 安装完毕后，使用PHP自带的服务器运行项目，运行后地址为[http://127.0.0.1:8000/](http://127.0.0.1:8000/)。
+```bash
+$ php artisan serve
 ```
 
 参考资料
