@@ -1,5 +1,5 @@
 ---
-title: LaTex进行技术文档编写
+title: LaTex
 date: 2017-07-21 09:46:56
 categories: Document
 tags: LaTex
@@ -8,16 +8,27 @@ thumbnail: "/images/Document/latex.png"
 ![](/images/Document/latex.png)
 
 ## 目的
-如何在Ubuntu16.04使用LaTex进行技术文档编写。
+如何在Unix-like系统下面安装LaTex。
 
 <!--more-->
 
 ## 简介
-LaTex是一个高质量的文档排版系统(Document preparation system for high-quality typesetting)，经常被用来发布中大型技术文档或者科学文章。LaTeX不是一个文档处理器(Word processor)，LaTeX让使用者专注于文档的内容而不是怎么呈现文档。
+LaTex是一个高质量的文档排版系统(Document preparation system for high-quality typesetting)，可以处理复杂的数学公式，经常被用来发布技术文档或者科学文章。LaTex不是一个文档处理器(Word processor)，LaTex让使用者专注于文档的内容而不用关心怎么进行文档排版。
+
+LaTex可以结合版本控制系统Git，能够实现多人同步编写文档，并且可以记录整个文档修改的历史记录，可以生成PDF格式的文档，是一种工业级别的文字排版系统，这种特性是Microsoft Word所无法比拟的。
+
+LaTex是一门标记性语言，其他标记性语言如我们熟悉的HTML，Markdown等是同属一类。
 
 ## 内容
 
-### Installation
+### Ubuntu
+在Ubuntu里面只需要简单一个命令就可以完成安装。
+```bash
+$ sudo apt install texlive-binaries
+$ tex --version
+```
+
+### Unix-like系统手动安装
 1. 下载软件压缩包`install-tl-unx.tar.gz`，解压。
 [http://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/](http://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/)
 2. 进入文件夹路径，执行命令进行安装。
