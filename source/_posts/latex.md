@@ -22,10 +22,30 @@ LaTex是一门标记性语言，其他标记性语言如我们熟悉的HTML，Ma
 ## 内容
 
 ### Ubuntu
-在Ubuntu里面只需要简单一个命令就可以完成安装。
+1. 在Ubuntu里面只需要简单一个命令就可以完成安装。
 ```bash
-$ sudo apt install texlive-binaries
+$ sudo apt install texlive-full
 $ tex --version
+```
+
+2. 安装编辑器TexStudio
+```bash
+$ sudo apt install texstudio
+```
+
+3. 使用`XeLaTex`进行文档编译。
+
+4. 样例文本。
+```
+\documentclass{article}
+\usepackage{ctex}
+\title{你好，世界}
+\author{Mac}
+\date{2015, July 4}
+\begin{document}
+  \maketitle
+  这是我呐喊出来的第一句话。
+\end{document}
 ```
 
 ### Unix-like系统手动安装
@@ -53,7 +73,10 @@ $ tex --version
 ```
 
 参考资料
+[Ubuntu LaTex](https://help.ubuntu.com/community/LaTeX)
 [Formatting information](http://latex.silmaril.ie/formattinginformation/)
+[TexStudio Support Chinese](http://blog.zhangliaoyuan.com/blog/2015/08/15/how-to-support-latex-chinese-editing-in-texstudio-under-mac/)
+[WikiBooks LaTex](https://en.wikibooks.org/wiki/LaTeX)
 [An Introduction to Using TeX](http://www.math.harvard.edu/texman/)
 [LaTex](http://www.latex-project.org/about/)
 [Quick install](http://www.tug.org/texlive/quickinstall.html)
