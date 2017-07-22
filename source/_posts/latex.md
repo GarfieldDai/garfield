@@ -28,14 +28,7 @@ $ sudo apt install texlive-full
 $ tex --version
 ```
 
-2. 安装编辑器TexStudio
-```bash
-$ sudo apt install texstudio
-```
-
-3. 使用`XeLaTex`进行文档编译。
-
-4. 样例文本。
+2. 新建样例文本，命名为`hello.tex`。
 ```
 \documentclass{article}
 \usepackage{ctex}
@@ -46,6 +39,18 @@ $ sudo apt install texstudio
   \maketitle
   这是我呐喊出来的第一句话。
 \end{document}
+```
+
+3. 使用`XeLaTex`进行文档编译。
+```bash
+$ xelatex hello.tex
+```
+
+4. 你可以在当前目录看到生成的PDF文档`hello.pdf`。
+
+5. 安装编辑器TexStudio
+```bash
+$ sudo apt install texstudio
 ```
 
 ### Unix-like系统手动安装
