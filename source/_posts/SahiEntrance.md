@@ -1,7 +1,7 @@
 ---
 title: Sahi 快速入门
 date: 2017-03-23 17:27:07
-categories: Automation Testing
+categories: Testing
 tags: Sahi
 thumbnail: "/images/Automation/Sahi/Sahi-Pro-Logo.png"
 ---
