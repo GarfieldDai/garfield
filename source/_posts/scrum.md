@@ -1,6 +1,6 @@
 ---
 title: Scrum敏捷开发
-date: 2017-07-24 22:20:53
+date: 2017-08-07 22:20:53
 categories: Agile
 tags: Scrum
 thumbnail: "/images/Agile/scrum.png"
@@ -13,7 +13,7 @@ thumbnail: "/images/Agile/scrum.png"
 <!--more-->
 
 ## 简介
-Scrum是一个过程框架，被用来管理产品的开发和维护，它是基于经验的一套流程控制理论。简单讲，就是一种项目管理的方式。
+Scrum是一个过程框架，被用来管理产品的开发和维护，它是基于经验的一套流程控制理论，采用一种迭代、增量式的方法来进行项目管理。
 
 ![](/images/Agile/scrum_mindset.png)
 
@@ -39,9 +39,9 @@ Scrum团队是`跨职能`的`自组织`团队。
 + `自组织`：自己选择如何以最好的方式来完成工作,而不是由团队之外的人来指导。
 
 Scrum团队有三种角色：
-+ Product Owner (产品负责人)
++ Product Owner (一名产品负责人)
 + Development Team（开发团队）
-+ Scrum Master（Scrum主管）
++ Scrum Master（一名Scrum主管）
 
 #### 产品负责人
 产品负责人负责如何让产品和开发团队工作的价值最大化。产品负责人是唯一一个负责管理产品待办列表的人。职责范围包括：
@@ -68,7 +68,7 @@ Scrum团队有三种角色：
 开发团队的规模一般是3~9个人，不包括产品负责人和Scrum主管（除非他们也参与和执行Sprint待办列表中的开发工作）。人员过少会导致缺少互动和技能不够，过多会增加沟通成本和管理成本。
 
 #### Scrum主管
-Scrum主管要确保Scrum团队遵循Scrum的理论、实践和规则。Scrum主管是一个服务型领导。个人感觉这个角色更像是Scrum的布道师。
+Scrum主管要确保Scrum团队遵循Scrum的理论、实践和规则。Scrum主管是一个服务型领导。
 
 Scrum主管服务于产品负责人：
 + 找到有效管理产品待办列表的技巧。
@@ -80,11 +80,11 @@ Scrum主管服务与开发团队：
 + 在自组织和跨职能方面给予开发团队指导。
 + 帮助开发团队创造高价值的产品。
 + 移除开发团队工作进展中的障碍。
-+ 按要求或需要引导 Scrum 事件。
++ 按要求或需要引导Scrum事件。
 + 在Scrum还未完全采纳和理解的组织环境中指导开发团队。
 
 Scrum主管服务于组织：
-+ 带领并指导组织采纳 Scrum。
++ 带领并指导组织采纳Scrum。
 + 在组织范围内规划Scrum的实施。
 + 帮助员工和利益攸关者理解并实施Scrum和经验产品开发。
 + 引发能够提升Scrum团队生产效率的改变。
@@ -95,7 +95,7 @@ Sprint是Scrum的核心，该事件持续时间为一个月以内，每个Sprint
 
 Sprint由Sprint计划会议、每日Scrum站会、开发工作、 Sprint评审会议和Sprint回顾会议构成。
 
-#### Scrum计划会议
+#### Sprint计划会议
 Sprint中要做的工作在Sprint计划会议中来做计划。这份工作计划是由整个Scrum团队共同协作完成的。Sprint计划会议是限时的,以一个月的Sprint来说最多8小时为上限。
 
 + Scrum主管确保会议顺利举行以及控制会议的时间进展。
@@ -125,7 +125,7 @@ Sprint评审会议内容：
 
 #### Sprint回顾会议
 + Sprint回顾会议发生在Sprint评审会议结束之后，下个Sprint计划会议之前。
-+ 参会人员仅是Scrum团队，目的是Scrum团队检视自身并创建下一个Sprint改进计划的机会
++ 参会人员仅是Scrum团队，目的是Scrum团队进行自我总结并在下一个Sprint中改进不足。
 + 对于长度为一个月的Sprint来说,会议的限时为3小时。
 + Scrum主管确保会议正常举行，并控制会议时间进度。
 
