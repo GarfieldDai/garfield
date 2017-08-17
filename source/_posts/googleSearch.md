@@ -3,9 +3,9 @@ title: 如何使用Google搜索引擎
 date: 2017-08-15 22:12:47
 categories: Google
 tags: Search
-thumbnail: "images/Google/sech.png"
+thumbnail: "/images/Google/sech.png"
 ---
-![](images/Google/sech.png)
+![](/images/Google/sech.png)
 
 ## 目的
 善用Google引擎，优化搜索结果，提高工作效率。
