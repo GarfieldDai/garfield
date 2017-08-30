@@ -151,4 +151,4 @@ public class Application {
 
 参考资料
 [Spring Framework](http://projects.spring.io/spring-framework/)
-[Spring Framework Reference Document](docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/)
+[Spring Framework Reference Document](https://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#spring-introduction)
