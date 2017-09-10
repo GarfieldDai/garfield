@@ -1,11 +1,11 @@
 ---
 title: Http 缓存
 date: 2017-04-10 11:14:00
-tags: Cache
-categories: Http
-thumbnail: "/images/Http/Http.jpg"
+tags: Http
+categories: Network
+thumbnail: "/images/Network/Http/Http.jpg"
 ---
-![](/images/Http/Http.jpg)
+![](/images/Network/Http/Http.jpg)
 
 ## 目的
 理解什么是 Http 缓存。
@@ -16,9 +16,9 @@ thumbnail: "/images/Http/Http.jpg"
 在 Web 应用开发中，用户对网页的响应速度要求极高。如果每次刷新页面都要从服务器里面重新拿网页资源（HTML, CSS, Javascript, Image, Video, etc），不仅会影响网页的响应速度，而且也很占用服务器宝贵的带宽资源。
 
 为了解决上述的问题，可以设置 Http 缓存（Http Caching）。在一定的条件范围内，用户重新访问相同的网页资源，只需在浏览器缓存中提取即可，并不需要从服务器中重新获取资源。
-![](/images/Http/Cache/HttpCaching01.jpg)
+![](/images/Network/Http/Cache/HttpCaching01.jpg)
 目前所有的现代浏览器都实现了 Http 缓存，你只需要在服务器响应（Response）中设置 Http 协议头 ( Http header) 的参数，确保服务器正确的返回响应的参数。
-![](/images/Http/Cache/HttpCaching02.jpg)
+![](/images/Network/Http/Cache/HttpCaching02.jpg)
 在设置缓存的同时，也要注意怎么处理缓存过期，避免用户看到过期的内容。
 
 ## 内容
@@ -41,11 +41,11 @@ Http 协议头有两个重要的参数设置 Cache-Control 和 Expires 。
   `Cache-Control:public`
   `Expires: Mon, 25 Jun 2012 21:31:12 GMT`
 
-![](/images/Http/Cache/HttpCaching04.jpg)
+![](/images/Network/Http/Cache/HttpCaching04.jpg)
 
 ### Conditional requests :
 Conditional requests 其实就是每次加载资源的时候，都会去服务器询问当前资源是否有更新，如果有，就返回最新的资源。如果没有，就返回 Http 状态码304。虽然每次加载资源都需要请求服务器，但是只要资源没有更新，返回的 response body 是空的，这样也就减轻的带宽的压力，同时也避免用户浏览器缓存更新不及时，看到过期内容的情况。
-![](/images/Http/Cache/HttpCaching03.jpg)
+![](/images/Network/Http/Cache/HttpCaching03.jpg)
 
 1. Time-based : 基于时间的设置
   ** Last-Modified ** ：在第一次加载资源的时候，给当前资源标记最新的时间戳。
@@ -65,7 +65,7 @@ Conditional requests 其实就是每次加载资源的时候，都会去服务�
   `If-None-Match: "15f0fff99ed5aae4edffdd6496d7131f"`
   服务器检测到两个校验码相同，表示当前资源没有更新，服务器会返回 304 状态码和空的响应体（empty response body）。
 
-![](/images/Http/Cache/HttpCaching05.jpg)
+![](/images/Network/Http/Cache/HttpCaching05.jpg)
 
 ## 实践参考
 ### 静态资源缓存
@@ -88,7 +88,7 @@ Conditional requests 其实就是每次加载资源的时候，都会去服务�
 ### 组合实现
 假设一个情况，一个 CSS 文件你设置了缓存时间为24小时 (max-age=86400)，但是你发现里面有问题，马上进行了修改并且上线，但是客户端并不能马上进行缓存更新，这种情况怎么办？如何能够做到客户端能够长时间的缓存，但是又能够马上进行缓存的更新呢？
 
-![](/images/Http/Cache/HttpCaching06.png)
+![](/images/Network/Http/Cache/HttpCaching06.png)
 
 你可以通过修改 URL 强制用户重新加载资源，类似Etage文件校验码的原理，你可以把校验码放在文件名中，比如 style.x234dff.css。HTML 里面 Cache-Control 设置为 “no-cache”，目的就是让浏览器每次都到服务器拿到最新的代码。通过组合 Etage，Cache-Control 和 URLs，不但能够拥有长时间的缓存，又能够满足对文件修改并及时生效的需求。
 
