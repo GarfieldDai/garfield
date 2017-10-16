@@ -1,14 +1,14 @@
 ---
-title: Mysql简单配置和使用
+title: MySQL简单配置和使用
 date: 2017-07-08 11:45:53
 categories: Databases
-tags: Mysql
+tags: MySQL
 thumbnail: "/images/Databases/Mysql/mysql.jpg"
 ---
 ![](/images/Databases/Mysql/mysql.jpg)
 
 ## 目的
-如何在Ubuntu16.04配置和使用Mysql。
+如何在Ubuntu16.04配置和使用MySQL。
 
 <!--more-->
 
