@@ -39,6 +39,9 @@ Kanban管理起源于丰田公司，是一种优化生产的管理方式。
 + Continuous Improvement 持续提升
 落实Kanban管理，让持续提升的文化奠定基础。团队可以通过跟踪过程流，软件质量，生产效率，交付时间等来评估团队的效率。根据实际项目开发的需要不断改进Kanban管理方式，进而持续提升整个团队的开发效率。
 
+![](/images/Agile/kanbanDetail.jpg)
+
 参考资料
 [What is Kanban? | LeanKit](https://leankit.com/learn/kanban/what-is-kanban/)
+[WHAT IS A KANBAN BOARD?](https://leankit.com/learn/kanban/kanban-board/)
 [How the kanban methodology applies to software development](https://www.atlassian.com/agile/kanban)
