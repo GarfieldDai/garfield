@@ -1,5 +1,5 @@
 ---
-title: TypeScript 系列教程一
+title: TypeScript环境配置
 date: 2017-05-20 21:28:50
 categories: JavaScript
 tags: TypeScript
