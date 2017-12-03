@@ -44,6 +44,7 @@ $ source ~/.bash_profile
 + `lsvirtualenv`：列出当前所有的环境。
 + `showvirtualenv`：查看环境详细信息。
 + `rmvirtualenv`：移除环境。
++ `deactivate`：退出虚拟环境。
 
 \* 虚拟环境目录在`/Users/garfield/.virtualenvs`下面。
 
