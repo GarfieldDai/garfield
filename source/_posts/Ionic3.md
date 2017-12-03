@@ -28,7 +28,7 @@ $ npm install -g ionic cordova
 $ ionic start demo tabs
 # ionic start demo --type=ionic1
 ```
-  Ionic3提供了以下几个模板，这里选用tabs进初始化项目。
+  Ionic3提供了以下几个模板，这里选用tabs进行初始化项目。
   1. tabs : a simple 3 tab layout
   2. sidemenu: a layout with a swipable menu on the side
   3. blank: a bare starter with a single page
