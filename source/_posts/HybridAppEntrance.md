@@ -24,17 +24,17 @@ Ionic 提供了移动应用开发的前端框架，本篇章使用 Ionic v1 Fram
 
 2. 安装 Cordova 和 Ionic。
   ```
-  npm install -g cordova ionic
+  $ npm install -g cordova ionic
   ```
 
 3. 初始化项目,命名为 ‘myApp’。
   ```
-  ionic start myApp tabs
+  $ ionic start myproject --type ionic1
   ```
 
 4. 本地浏览器测试项目运行。
   ```
-  ionic serve
+  $ ionic serve
   ```
 
 ### 安卓应用开发配置
@@ -44,8 +44,8 @@ Ionic 提供了移动应用开发的前端框架，本篇章使用 Ionic v1 Fram
 
 3. 设置环境变量。
   + JAVA_HOME
-  + ANDROID_HOME
-  + Path
+  + ANDROID_HOME为SDK路径。
+  + 将下面路径加入到$PATH环境变量里面。
     + Gradle
     + Platform-tools
     + Tools
