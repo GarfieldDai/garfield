@@ -17,7 +17,7 @@ thumbnail: "/images/ml/ml.jpg"
 机器学习是一门交叉学科，入门机器学习除了计算机编程基础外，还需要有一定的数学基础如高等数学，线性代数和概率论统计。
 
 ## 机器学习基本概念
-机器学习分为监督学习（supervised Learning）和非监督学习（unsupervised Learning）。
+机器学习分为监督学习（supervised Learning）和无监督学习（unsupervised Learning）。
 
 #### 监督学习
 监督学习有两种：分类（classification）和回归（regression），这类算法必须知道预测什么。
