@@ -12,7 +12,9 @@ thumbnail: "/images/ml/ml_map.png"
 <!--more-->
 
 ## 简介
-K-均值聚类算法属于无监督学习，K指的是用户指定要创建的聚类（Cluster）的数目。
+K-均值聚类算法属于无监督学习，K指的是用户指定要创建的聚类（cluster）的数目。
+
+聚类和分类最大的区别在于分类的目标已知，而聚类的目标未知，没有预先定义，聚类也被称为无监督分类（unsupervised classification）。
 
 这里使用`mglearn`进行数据展示，该模块是基于`matplotlib`进行封装的，可以使用`pip`进行安装。
 ```shell
