@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>OpenCV macOS 环境配置 | Garfield Dai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="目的如何在macOS环境下进行OpenCV的配置，使用Python进行计算机视觉(Computer Vision)开发。">
+<meta name="keywords" content="OpenCV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenCV macOS 环境配置">
+<meta property="og:url" content="http://garfieldwiki.com/2017/09/13/opencv/index.html">
+<meta property="og:site_name" content="Garfield Dai">
+<meta property="og:description" content="目的如何在macOS环境下进行OpenCV的配置，使用Python进行计算机视觉(Computer Vision)开发。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://garfieldwiki.com/images/ComputerVision/opencv.jpg">
+<meta property="og:updated_time" content="2019-03-24T02:03:36.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenCV macOS 环境配置">
+<meta name="twitter:description" content="目的如何在macOS环境下进行OpenCV的配置，使用Python进行计算机视觉(Computer Vision)开发。">
+<meta name="twitter:image" content="http://garfieldwiki.com/images/ComputerVision/opencv.jpg">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Garfield Dai</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/thumbnail.png">
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/thumbnail.png">
+            <h2 id="name">Garfield Dai</h2>
+            <h3 id="title">Full-Stack Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://cn.linkedin.com/in/garfielddai">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                48
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                31
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/GarfieldDai" target="_blank" title="github" class="tooltip">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-opencv" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            OpenCV macOS 环境配置
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/09/13/opencv/">
+            <time datetime="2017-09-13T12:26:57.000Z" itemprop="datePublished">2017-09-13</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Computer-Vision/">Computer Vision</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/OpenCV/">OpenCV</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="/images/ComputerVision/opencv.jpg" alt></p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>如何在macOS环境下进行OpenCV的配置，使用Python进行计算机视觉(Computer Vision)开发。</p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>OpenCV是开源的计算机视觉类库，支持C，C++，Java，Python编程语言，可以进行跨平台开发，该类库集成了图像和视频的输入输出，图像处理，物体识别，机器学习和深度神经网络等实用工具类。</p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>本博文基于Python3.6和OpenCV3进行讲解，当前系统版本为macOS 10.12+，在macOS系统上面安装OpenCV是一件非常操蛋的事情。</p>
+<ol>
+<li><p>安装Xcode，如果是第一次安装使用，需要获得苹果开发者授权，安装完后，执行命令，按照提示输入<code>accept</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo xcodebuild -license</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装苹果命令行工具，该工具包含了make，GCC，clang。该步骤是必须要执行的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo xcode-select --install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装苹果系统包管理器<code>Homebrew</code>，类似Debian系统系列的<code>apt-get</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/bin/ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>macOS系统虽然自带了Python，但是为了避免与系统冲突，我们自己安装专门进行开发的Python。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install python3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查Python版本是否正确安装配置环境变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ which python3</span><br><span class="line">/usr/local/bin/python3</span><br></pre></td></tr></table></figure>
+<p>如果Python没有配置好环境变量，需要手动更新环境变量<code>~/.bash_profile</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Python3</span><br><span class="line">export PATH=/usr/local/bin/python3:$PATH</span><br></pre></td></tr></table></figure>
+<p>更新环境变量配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装Python虚拟环境<code>virtualenv</code>和<code>virtualenvwrapper</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install virtualenv virtualenvwrapper</span><br></pre></td></tr></table></figure>
+<p>如果出现<code>OSError: [Errno 1] Operation not permitted by six</code>，可使用下面命令行解决问题。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pip install virtualenvwrapper --ignore-installed six</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置环境变量<code>~/.bash_profile</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Virtualenv/VirtualenvWrapper</span><br><span class="line">source /usr/local/bin/virtualenvwrapper.sh</span><br></pre></td></tr></table></figure>
+<p>更新环境变量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建Python3虚拟环境，使用<code>mkvirtualenv</code>。使用该命令创建名为<code>cv</code>的虚拟环境，该环境独立于系统其他环境，有自己独立的包目录，避免包冲突。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkvirtualenv cv -p python3</span><br></pre></td></tr></table></figure>
+<p>进入创建好的<code>cv</code>环境。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ workon cv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装<code>Numpy</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install numpy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>正式编译之前，需要安装编译，图像I/O和优化相关的工具包的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ brew install cmake pkg-config</span><br><span class="line">$ brew install jpeg libpng libtiff openexr</span><br><span class="line">$ brew install eigen tbb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从Gitub下载OpenCV源代码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/opencv/opencv</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/opencv/opencv_contrib</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来正式开始编译配置，首先创建并进入编译目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/opencv</span><br><span class="line">$ mkdir build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建自己环境的CMake命令，这里给出的是该命令的模版。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -D CMAKE_BUILD_TYPE=RELEASE \</span><br><span class="line">    -D CMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span> \</span><br><span class="line">    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \</span><br><span class="line">    -D PYTHON3_LIBRARY=YYY \</span><br><span class="line">    -D PYTHON3_INCLUDE_DIR=ZZZ \</span><br><span class="line">    -D PYTHON3_EXECUTABLE=<span class="variable">$VIRTUAL_ENV</span>/bin/python \</span><br><span class="line">    -D BUILD_opencv_python2=OFF \</span><br><span class="line">    -D BUILD_opencv_python3=ON \</span><br><span class="line">    -D INSTALL_PYTHON_EXAMPLES=ON \</span><br><span class="line">    -D INSTALL_C_EXAMPLES=OFF \</span><br><span class="line">    -D BUILD_EXAMPLES=ON ..</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>替换上面命令的<code>YYY</code>和<code>ZZZ</code>，可参考我本地的配置，不要复制粘贴，每个人的机器配置会有不同。<br><code>PYTHON3_LIBRARY=YYY</code>：libpython3.6.dylib的路径。<br><code>PYTHON3_INCLUDE_DIR=ZZZ</code>：python3.6m的路径。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -D CMAKE_BUILD_TYPE=RELEASE \</span><br><span class="line">    -D CMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span> \</span><br><span class="line">    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \</span><br><span class="line">    -D PYTHON3_LIBRARY=/usr/<span class="built_in">local</span>/Cellar/python3/3.6.2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/config-3.6m-darwin/libpython3.6.dylib \</span><br><span class="line">    -D PYTHON3_INCLUDE_DIR=/usr/<span class="built_in">local</span>/Cellar/python3/3.6.2/Frameworks/Python.framework/Versions/3.6/include/python3.6m \</span><br><span class="line">    -D PYTHON3_EXECUTABLE=<span class="variable">$VIRTUAL_ENV</span>/bin/python \</span><br><span class="line">    -D BUILD_opencv_python2=OFF \</span><br><span class="line">    -D BUILD_opencv_python3=ON \</span><br><span class="line">    -D INSTALL_PYTHON_EXAMPLES=ON \</span><br><span class="line">    -D INSTALL_C_EXAMPLES=OFF \</span><br><span class="line">    -D BUILD_EXAMPLES=ON ..</span><br></pre></td></tr></table></figure>
+<p>配置好后，执行该命令。</p>
+</li>
+<li><p>开始编译，编译时间在30-90分钟左右，取决于你的机器配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make -j4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译完后，如果没有出现错误，执行安装命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装成功后，检查python包安装目录是否有类似<code>cv2.cpython-35m-darwin.so</code>的文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /usr/<span class="built_in">local</span>/lib/python3.6/site-packages/</span><br><span class="line">$ ls -l *.so</span><br><span class="line">-rwxr-xr-x  1 root  admin  3694564 Nov 15 11:28 cv2.cpython-35m-darwin.so</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将<code>cv2.cpython-35m-darwin.so</code>重新命名为<code>cv2.so</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /usr/<span class="built_in">local</span>/lib/python3.6/site-packages/</span><br><span class="line">$ mv cv2.cpython-35m-darwin.so cv2.so</span><br><span class="line">$ <span class="built_in">cd</span> ~</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> ~/.virtualenvs/cv/lib/python3.6/site-packages/</span><br><span class="line">$ ln -s /usr/<span class="built_in">local</span>/lib/python3.6/site-packages/cv2.so cv2.so</span><br><span class="line">$ <span class="built_in">cd</span> ~</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>校验OpenCV是否已经正确安装并引入。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ workon cv</span><br><span class="line">$ python</span><br><span class="line">Python 3.6.2 (default, Jul 17 2017, 16:44:45)</span><br><span class="line">[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.42)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; import cv2</span><br><span class="line">&gt;&gt;&gt; cv2.__version__</span><br><span class="line"><span class="string">'3.3.0-dev'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>参考资料<br><a href="http://docs.opencv.org/master/d9/df8/tutorial_root.html" target="_blank" rel="noopener">OpenCV Documentation</a><br><a href="http://www.pyimagesearch.com/2016/12/05/macos-install-opencv-3-and-python-3-5/" target="_blank" rel="noopener">OpenCV Tutorials</a><br><a href="https://brew.sh" target="_blank" rel="noopener">Homebrew</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <!-- %- partial('share/index', { post: post }) % -->
+            <!-- 
+    
+ -->
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/09/27/nginxLoadBalancing/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    NGINX反向代理和负载均衡
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/09/12/httpMessage/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">HTTP Message</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+<!-- 
+    
+    <section id="comments">
+    
+    </section>
+
+ -->
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/08/face-detection/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ComputerVision/face_detection.png)" alt="使用OpenCV进行人脸检测" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Computer-Vision/">Computer Vision</a></p>
+                            <p class="item-title"><a href="/2018/02/08/face-detection/" class="title">使用OpenCV进行人脸检测</a></p>
+                            <p class="item-date"><time datetime="2018-02-08T09:54:15.000Z" itemprop="datePublished">2018-02-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/18/kMeans/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml_map.png)" alt="K-means聚类算法" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/18/kMeans/" class="title">K-means聚类算法</a></p>
+                            <p class="item-date"><time datetime="2017-12-18T10:18:35.000Z" itemprop="datePublished">2017-12-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/09/machinelearning/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml.jpg)" alt="什么是机器学习" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/09/machinelearning/" class="title">什么是机器学习</a></p>
+                            <p class="item-date"><time datetime="2017-12-09T14:41:12.000Z" itemprop="datePublished">2017-12-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/03/pythonVirtualEnv/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Python/python.jpg)" alt="Python虚拟环境" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/12/03/pythonVirtualEnv/" class="title">Python虚拟环境</a></p>
+                            <p class="item-date"><time datetime="2017-12-03T11:59:57.000Z" itemprop="datePublished">2017-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/01/Ionic3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Mobile/ionic3.jpg)" alt="使用Ionic3进行移动开发" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Mobile/">Mobile</a></p>
+                            <p class="item-title"><a href="/2017/12/01/Ionic3/" class="title">使用Ionic3进行移动开发</a></p>
+                            <p class="item-date"><time datetime="2017-11-30T16:15:25.000Z" itemprop="datePublished">2017-12-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Agile/">Agile</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CI/">CI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CMS/">CMS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer Vision</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Databases/">Databases</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Document/">Document</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Editor/">Editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front End</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Google/">Google</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hibernate/">Hibernate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile/">Mobile</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Testing/">Testing</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bower/">Bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dashboard/">Dashboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Http/">Http</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hybrid-App/">Hybrid App</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JMS/">JMS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSHint/">JSHint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Joomla/">Joomla</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kanban/">Kanban</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LAMP/">LAMP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NGINX/">NGINX</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/">OpenCV</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RBAC/">RBAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SASS/">SASS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sahi/">Sahi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/">Scrum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/">Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Framework/">Spring Framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Video/">Video</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 Garfield Dai<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a><br>
+            <a href="http://www.miitbeian.gov.cn/">粤ICP备17035589号</a>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

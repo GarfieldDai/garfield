@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>MySQL用户管理和权限管理 | Garfield Dai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="目的使用MySQL管理不同用户，分别授予不同的权限。">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL用户管理和权限管理">
+<meta property="og:url" content="http://garfieldwiki.com/2017/10/16/mysqlAccount/index.html">
+<meta property="og:site_name" content="Garfield Dai">
+<meta property="og:description" content="目的使用MySQL管理不同用户，分别授予不同的权限。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://garfieldwiki.com/images/Databases/Mysql/mysql.jpg">
+<meta property="og:updated_time" content="2019-03-24T02:03:36.692Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL用户管理和权限管理">
+<meta name="twitter:description" content="目的使用MySQL管理不同用户，分别授予不同的权限。">
+<meta name="twitter:image" content="http://garfieldwiki.com/images/Databases/Mysql/mysql.jpg">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Garfield Dai</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/thumbnail.png">
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/thumbnail.png">
+            <h2 id="name">Garfield Dai</h2>
+            <h3 id="title">Full-Stack Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://cn.linkedin.com/in/garfielddai">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                48
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                31
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/GarfieldDai" target="_blank" title="github" class="tooltip">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-mysqlAccount" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            MySQL用户管理和权限管理
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/16/mysqlAccount/">
+            <time datetime="2017-10-16T06:22:07.000Z" itemprop="datePublished">2017-10-16</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Databases/">Databases</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/MySQL/">MySQL</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="/images/Databases/Mysql/mysql.jpg" alt></p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>使用MySQL管理不同用户，分别授予不同的权限。</p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在系统应用中，一个数据库可能为多个应用系统提供服务，不可能给每个系统都使用root用户权限，需要给不同的系统或者用户提供不同的用户权限，同时也避免root用户被泄露的安全风险。</p>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><p>MySQL账户信息都保存在<code>mysql</code>这个database里面，账户名由用户名和主机名组成<code>&#39;user_name&#39;@&#39;host_name&#39;</code>。</p>
+<ul>
+<li><p>登录MySQL数据库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 登录本地数据库</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysql --user=user_name --password db_name</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysql -u user_name -p db_name</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 登录远程数据库</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysql --host=host_name --user=myname --password db_name</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysql -h host_name -u myname -p db_name</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> CREATE USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'password'</span>;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 登陆后需修改密码才能继续操作</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> CREATE USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'password'</span> PASSWORD EXPIRE;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 每隔180天需要重新修改密码</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> CREATE USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> PASSWORD EXPIRE INTERVAL 180 DAY;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用户密码管理</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 修改密码</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> ALTER USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'new_password'</span>;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 登陆后需修改密码才能继续操作</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> ALTER USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> PASSWORD EXPIRE;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 用户用新密码登录后需重新修改密码</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> ALTER USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'new_password'</span> PASSWORD EXPIRE;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 每隔180天需要重新修改密码</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> ALTER USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> PASSWORD EXPIRE INTERVAL 180 DAY;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 取消密码过期</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> ALTER USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> PASSWORD EXPIRE NEVER;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 不推荐使用该方法修改密码，推荐使用ALTER</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> SET PASSWORD FOR <span class="string">'garfield'</span>@<span class="string">'localhost'</span> = <span class="string">'new_password'</span>;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> DROP USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span>;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>锁定用户账户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> ALTER USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> ACCOUNT LOCK;</span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> ALTER USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> ACCOUNT UNLOCK;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改账户信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> RENAME USER <span class="string">'garfield'</span>@<span class="string">'localhost'</span> TO <span class="string">'garfield'</span>@<span class="string">'127.0.0.1'</span>;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><p>在授予用户权限的时候，应该遵守按需供给，根据需要赋予权限。</p>
+<ul>
+<li>查看用户权限<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> SHOW GRANTS FOR <span class="string">'garfield'</span>@<span class="string">'localhost'</span>;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 查看当前用户权限</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> SHOW GRANTS;</span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> SHOW GRANTS FOR CURRENT_USER;</span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> SHOW GRANTS FOR CURRENT_USER();</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>MySQL权限有多个层面的权限控制:</p>
+<ol>
+<li>Object Quoting Guidelines</li>
+<li>Privileges Supported by MySQL</li>
+<li>Global Privileges</li>
+<li>Database Privileges</li>
+<li>Table Privileges</li>
+<li>Column Privileges</li>
+<li>Stored Routine Privileges</li>
+<li>Proxy User Privileges</li>
+<li>Account Names and Passwords</li>
+<li>Implicit Account Creation</li>
+<li>Other Account Characteristics</li>
+<li>MySQL and Standard SQL Versions of GRANT</li>
+</ol>
+<p>本博文从数据库Database Privileges，数据表Table Privileges和数据表的列Column Privileges三个层面介绍权限管理。</p>
+<ul>
+<li><p>Database Privileges<br>给用户授予数据库级别的操作权限。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> GRANT ALL ON mydb.* TO <span class="string">'someuser'</span>@<span class="string">'somehost'</span>;</span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> GRANT SELECT, INSERT ON mydb.* TO <span class="string">'someuser'</span>@<span class="string">'somehost'</span>;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Table Privileges<br>给用户授予数据库表级别的操作权限。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> GRANT ALL ON mydb.mytbl TO <span class="string">'someuser'</span>@<span class="string">'somehost'</span>;</span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> GRANT SELECT, INSERT ON mydb.mytbl TO <span class="string">'someuser'</span>@<span class="string">'somehost'</span>;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Column Privileges<br>给用户授予数据库表的列级别的操作权限。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> GRANT SELECT (col1), INSERT (col1,col2) ON mydb.mytbl TO <span class="string">'someuser'</span>@<span class="string">'somehost'</span>;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>撤销权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> REVOKE INSERT ON *.* FROM <span class="string">'garfield'</span>@<span class="string">'localhost'</span>;</span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> REVOKE ALL PRIVILEGES, GRANT OPTION FROM user [, user] ...</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参考资料<br><a href="https://dev.mysql.com/doc/refman/5.7/en/security.html" target="_blank" rel="noopener">MySQL Security</a><br><a href="https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html" target="_blank" rel="noopener">MySQL User Account Management</a><br><a href="https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html" target="_blank" rel="noopener">Privileges Provided by MySQL</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <!-- %- partial('share/index', { post: post }) % -->
+            <!-- 
+    
+ -->
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/10/18/kanban/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Kanban管理
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/09/27/nginxLoadBalancing/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">NGINX反向代理和负载均衡</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+<!-- 
+    
+    <section id="comments">
+    
+    </section>
+
+ -->
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/08/face-detection/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ComputerVision/face_detection.png)" alt="使用OpenCV进行人脸检测" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Computer-Vision/">Computer Vision</a></p>
+                            <p class="item-title"><a href="/2018/02/08/face-detection/" class="title">使用OpenCV进行人脸检测</a></p>
+                            <p class="item-date"><time datetime="2018-02-08T09:54:15.000Z" itemprop="datePublished">2018-02-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/18/kMeans/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml_map.png)" alt="K-means聚类算法" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/18/kMeans/" class="title">K-means聚类算法</a></p>
+                            <p class="item-date"><time datetime="2017-12-18T10:18:35.000Z" itemprop="datePublished">2017-12-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/09/machinelearning/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml.jpg)" alt="什么是机器学习" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/09/machinelearning/" class="title">什么是机器学习</a></p>
+                            <p class="item-date"><time datetime="2017-12-09T14:41:12.000Z" itemprop="datePublished">2017-12-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/03/pythonVirtualEnv/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Python/python.jpg)" alt="Python虚拟环境" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/12/03/pythonVirtualEnv/" class="title">Python虚拟环境</a></p>
+                            <p class="item-date"><time datetime="2017-12-03T11:59:57.000Z" itemprop="datePublished">2017-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/01/Ionic3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Mobile/ionic3.jpg)" alt="使用Ionic3进行移动开发" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Mobile/">Mobile</a></p>
+                            <p class="item-title"><a href="/2017/12/01/Ionic3/" class="title">使用Ionic3进行移动开发</a></p>
+                            <p class="item-date"><time datetime="2017-11-30T16:15:25.000Z" itemprop="datePublished">2017-12-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Agile/">Agile</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CI/">CI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CMS/">CMS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer Vision</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Databases/">Databases</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Document/">Document</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Editor/">Editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front End</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Google/">Google</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hibernate/">Hibernate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile/">Mobile</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Testing/">Testing</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bower/">Bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dashboard/">Dashboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Http/">Http</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hybrid-App/">Hybrid App</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JMS/">JMS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSHint/">JSHint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Joomla/">Joomla</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kanban/">Kanban</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LAMP/">LAMP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NGINX/">NGINX</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/">OpenCV</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RBAC/">RBAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SASS/">SASS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sahi/">Sahi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/">Scrum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/">Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Framework/">Spring Framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Video/">Video</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 Garfield Dai<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a><br>
+            <a href="http://www.miitbeian.gov.cn/">粤ICP备17035589号</a>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

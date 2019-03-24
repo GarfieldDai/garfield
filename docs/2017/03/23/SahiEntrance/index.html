@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>Sahi 快速入门 | Garfield Dai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="目的使用 Sahi Pro 进行自动化测试。">
+<meta name="keywords" content="Sahi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sahi 快速入门">
+<meta property="og:url" content="http://garfieldwiki.com/2017/03/23/SahiEntrance/index.html">
+<meta property="og:site_name" content="Garfield Dai">
+<meta property="og:description" content="目的使用 Sahi Pro 进行自动化测试。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://garfieldwiki.com/images/Automation/Sahi/Sahi-Pro-Logo.png">
+<meta property="og:updated_time" content="2019-03-24T02:03:36.678Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sahi 快速入门">
+<meta name="twitter:description" content="目的使用 Sahi Pro 进行自动化测试。">
+<meta name="twitter:image" content="http://garfieldwiki.com/images/Automation/Sahi/Sahi-Pro-Logo.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Garfield Dai</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/thumbnail.png">
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/thumbnail.png">
+            <h2 id="name">Garfield Dai</h2>
+            <h3 id="title">Full-Stack Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://cn.linkedin.com/in/garfielddai">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                48
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                31
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/GarfieldDai" target="_blank" title="github" class="tooltip">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-SahiEntrance" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Sahi 快速入门
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/03/23/SahiEntrance/">
+            <time datetime="2017-03-23T09:27:07.000Z" itemprop="datePublished">2017-03-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Testing/">Testing</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Sahi/">Sahi</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="/images/Automation/Sahi/sahi-works-out-of-the-box.png" alt></p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>使用 Sahi Pro 进行自动化测试。</p>
+<a id="more"></a>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>需要 Java 环境1.5版本以上。</li>
+<li>在 <a href="http://sahipro.com/downloads-archive/" target="_blank" rel="noopener">Sahi</a> 官网下载安装包。</li>
+</ul>
+<h2 id="安装-Sahi"><a href="#安装-Sahi" class="headerlink" title="安装 Sahi"></a>安装 Sahi</h2><p>Sahi 的安装包为 jar 包，双击安装包 install_sahi_pro_xxx.jar 进行安装。</p>
+<h2 id="启动-Sahi-监控台"><a href="#启动-Sahi-监控台" class="headerlink" title="启动 Sahi 监控台"></a>启动 Sahi 监控台</h2><p>双击桌面快捷键就可以打开 Sahi 监控台。</p>
+<p><img src="/images/Automation/Sahi/SahiEntrance/Sahi_Pro_Console.png" alt></p>
+<h2 id="通过-Sahi-录制脚本"><a href="#通过-Sahi-录制脚本" class="headerlink" title="通过 Sahi 录制脚本"></a>通过 Sahi 录制脚本</h2><ol>
+<li><p>在监控台里面选择一个浏览器，打开浏览器，这里选择 Google Chrome。<br><img src="/images/Automation/Sahi/SahiEntrance/Sahi_Browser_View.png" alt></p>
+</li>
+<li><p>你可以在浏览器里面点击 Sahi Controller 打开控制面板，或者使用快捷键：按住ATL键后鼠标左键双击浏览器也能打开控制面板。</p>
+</li>
+<li><p>选择控制面板的 Record ，打开录制标签页。<br><img src="/images/Automation/Sahi/SahiEntrance/Sahi_Record_Tab.png" alt></p>
+</li>
+<li><p>在 Script Name 里面输入 first_script.sah 作为录制脚本名，点击 Record。</p>
+</li>
+<li><p>在浏览器里面点击 “Sample Application”，你就会打开 Sahi 自带的测试应用。<br><img src="/images/Automation/Sahi/SahiEntrance/recording-sample-app.png" alt></p>
+</li>
+<li><p>输入 username 为 “test”，password 为 “secret”，点击 “Login”。<br><img src="/images/Automation/Sahi/SahiEntrance/recording-page1.png" alt><br>在 “Evaluate Expression” 框里面，你可以看到被记录的最后一步。</p>
+</li>
+<li><p>在新的页面里面，展示的是一个购物车场景，在 “Add quantity to cart” 里面分别输入2,3,1 ，然后点击 “Add”。<br><img src="/images/Automation/Sahi/SahiEntrance/recording-page2.png" alt></p>
+</li>
+</ol>
+<h2 id="添加断言（assertions）"><a href="#添加断言（assertions）" class="headerlink" title="添加断言（assertions）"></a>添加断言（assertions）</h2><p>一个脚本通常由2部分组成：网页的操作过程和操作过程的校验，对于校验，Sahi 使用断言。Sahi 允许在录制脚本的过程中添加断言。</p>
+<ol>
+<li>按住 “CTRL” 键，在网页里面移动鼠标去定位网页元素。</li>
+<li>首先我们先把鼠标移动到 “Grand Total” 的输入框，在录制标签页里面，你可以看到 “Accessor” 会拿到当前鼠标定位的网页元素路径。</li>
+<li>点击 “Assert” 按钮为当前元素添加断言。</li>
+<li>你可以在 “Evaluate Expression” 里面看到程序自动生成的断言。</li>
+<li>点击 “Test–&gt;”，可以看到测试结果为 true。</li>
+<li>如果没有问题，你可以点击 “Append to Script”，将断言添加到你的脚本里面去。</li>
+<li>点击 “Logout” 退出当前应用。</li>
+<li>在控制面板里面点击 “Stop” 结束脚本录制。</li>
+</ol>
+<p><img src="/images/Automation/Sahi/SahiEntrance/recording-assertions.png" alt="Assertions"></p>
+<h2 id="回放脚本"><a href="#回放脚本" class="headerlink" title="回放脚本"></a>回放脚本</h2><ol>
+<li>打开 “Playback” 标签页，在 “File” 里面输入你的脚本名字 “first_script.sah”。</li>
+<li>输入初始URL，这里为 “ <a href="http://sahi.co.in/demo/training/login.html" target="_blank" rel="noopener">http://sahi.co.in/demo/training/login.html</a> ” 。</li>
+<li>点击 “Play” 开始执行录制的脚本。</li>
+<li>脚本结束后会在下面显示执行的结果 SUCCESS 或者 FAILURE 。</li>
+</ol>
+<p><img src="/images/Automation/Sahi/SahiEntrance/controller-playback.png" alt></p>
+<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><p>在控制面板的回放标签页下面，点击 “Logs”，可以查看所有脚本跑完后的结果。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <!-- %- partial('share/index', { post: post }) % -->
+            <!-- 
+    
+ -->
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/04/10/HttpCaching/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Http 缓存
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/03/20/Role-based-Access-Control/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">基于角色的权限管理</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+<!-- 
+    
+    <section id="comments">
+    
+    </section>
+
+ -->
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/08/face-detection/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ComputerVision/face_detection.png)" alt="使用OpenCV进行人脸检测" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Computer-Vision/">Computer Vision</a></p>
+                            <p class="item-title"><a href="/2018/02/08/face-detection/" class="title">使用OpenCV进行人脸检测</a></p>
+                            <p class="item-date"><time datetime="2018-02-08T09:54:15.000Z" itemprop="datePublished">2018-02-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/18/kMeans/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml_map.png)" alt="K-means聚类算法" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/18/kMeans/" class="title">K-means聚类算法</a></p>
+                            <p class="item-date"><time datetime="2017-12-18T10:18:35.000Z" itemprop="datePublished">2017-12-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/09/machinelearning/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml.jpg)" alt="什么是机器学习" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/09/machinelearning/" class="title">什么是机器学习</a></p>
+                            <p class="item-date"><time datetime="2017-12-09T14:41:12.000Z" itemprop="datePublished">2017-12-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/03/pythonVirtualEnv/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Python/python.jpg)" alt="Python虚拟环境" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/12/03/pythonVirtualEnv/" class="title">Python虚拟环境</a></p>
+                            <p class="item-date"><time datetime="2017-12-03T11:59:57.000Z" itemprop="datePublished">2017-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/01/Ionic3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Mobile/ionic3.jpg)" alt="使用Ionic3进行移动开发" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Mobile/">Mobile</a></p>
+                            <p class="item-title"><a href="/2017/12/01/Ionic3/" class="title">使用Ionic3进行移动开发</a></p>
+                            <p class="item-date"><time datetime="2017-11-30T16:15:25.000Z" itemprop="datePublished">2017-12-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Agile/">Agile</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CI/">CI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CMS/">CMS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer Vision</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Databases/">Databases</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Document/">Document</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Editor/">Editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front End</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Google/">Google</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hibernate/">Hibernate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile/">Mobile</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Testing/">Testing</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bower/">Bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dashboard/">Dashboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Http/">Http</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hybrid-App/">Hybrid App</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JMS/">JMS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSHint/">JSHint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Joomla/">Joomla</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kanban/">Kanban</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LAMP/">LAMP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NGINX/">NGINX</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/">OpenCV</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RBAC/">RBAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SASS/">SASS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sahi/">Sahi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/">Scrum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/">Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Framework/">Spring Framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Video/">Video</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 Garfield Dai<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a><br>
+            <a href="http://www.miitbeian.gov.cn/">粤ICP备17035589号</a>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

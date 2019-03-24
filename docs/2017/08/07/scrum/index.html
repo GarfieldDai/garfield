@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>Scrum敏捷开发 | Garfield Dai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="目的讲解什么是Scrum敏捷开发。">
+<meta name="keywords" content="Scrum">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scrum敏捷开发">
+<meta property="og:url" content="http://garfieldwiki.com/2017/08/07/scrum/index.html">
+<meta property="og:site_name" content="Garfield Dai">
+<meta property="og:description" content="目的讲解什么是Scrum敏捷开发。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://garfieldwiki.com/images/Agile/scrum.png">
+<meta property="og:updated_time" content="2019-03-24T02:03:36.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scrum敏捷开发">
+<meta name="twitter:description" content="目的讲解什么是Scrum敏捷开发。">
+<meta name="twitter:image" content="http://garfieldwiki.com/images/Agile/scrum.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Garfield Dai</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/thumbnail.png">
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/thumbnail.png">
+            <h2 id="name">Garfield Dai</h2>
+            <h3 id="title">Full-Stack Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://cn.linkedin.com/in/garfielddai">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                48
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                31
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/GarfieldDai" target="_blank" title="github" class="tooltip">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-scrum" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Scrum敏捷开发
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/07/scrum/">
+            <time datetime="2017-08-07T14:20:53.000Z" itemprop="datePublished">2017-08-07</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Agile/">Agile</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Scrum/">Scrum</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="/images/Agile/scrum.png" alt></p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>讲解什么是Scrum敏捷开发。</p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Scrum是一个过程框架，被用来管理产品的开发和维护，它是基于经验的一套流程控制理论，采用一种迭代、增量式的方法来进行项目管理。</p>
+<p><img src="/images/Agile/scrum_mindset.png" alt></p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ul>
+<li>Scrum Team（Scrum团队）<ol>
+<li>Product Owner (产品负责人)</li>
+<li>Development Team（开发团队）</li>
+<li>Scrum Master（Scrum主管）</li>
+</ol>
+</li>
+<li>Scrum Events（Scrum事件）<ol>
+<li>The Sprint</li>
+<li>Sprint Planning（Sprint计划会议）</li>
+<li>Daily Scrum（每日Scrum站会）</li>
+<li>Sprint Review（Sprint评审会议）</li>
+<li>Sprint Retrospective（Sprint回顾会议）</li>
+</ol>
+</li>
+<li>Scrum Artifacts（Scrum工件）<ol>
+<li>Product Backlog（产品待办列表）</li>
+<li>Sprint Backlog（Sprint待办列表）</li>
+<li>Increment（产品增量）</li>
+</ol>
+</li>
+</ul>
+<h4 id="Scrum团队"><a href="#Scrum团队" class="headerlink" title="Scrum团队"></a>Scrum团队</h4><p>Scrum团队是<code>跨职能</code>的<code>自组织</code>团队。</p>
+<ul>
+<li><code>跨职能</code>：拥有完成工作所需的全部技能,不需要依赖团队之外的人。</li>
+<li><code>自组织</code>：自己选择如何以最好的方式来完成工作,而不是由团队之外的人来指导。</li>
+</ul>
+<p>Scrum团队有三种角色：</p>
+<ul>
+<li>Product Owner (一名产品负责人)</li>
+<li>Development Team（开发团队）</li>
+<li>Scrum Master（一名Scrum主管）</li>
+</ul>
+<h4 id="产品负责人"><a href="#产品负责人" class="headerlink" title="产品负责人"></a>产品负责人</h4><p>产品负责人负责如何让产品和开发团队工作的价值最大化。产品负责人是唯一一个负责管理产品待办列表的人。职责范围包括：</p>
+<ul>
+<li>清晰的表达产品待办列表的每个列表项。</li>
+<li>对产品待办列表项进行排序,使其最好地实现目标和使命。</li>
+<li>优化开发团队的工作价值。</li>
+<li>确保产品待办列表对所有人都是是可见的、透明的和清晰的，并且能够让Scrum团队知道下一步工作是什么。</li>
+<li>确保开发团队对产品待办列表项有足够深的了解。</li>
+</ul>
+<p>产品负责人可以亲自完成上述工作,或者也可以让开发团队来完成。然而无论何者，产品负责人是负最终责任的人。</p>
+<p>产品负责人是一个人，想要改变产品待办列表项的优先级必须经过产品负责人。开发团队的工作范围只能限定在产品待办列表项。</p>
+<h4 id="开发团队"><a href="#开发团队" class="headerlink" title="开发团队"></a>开发团队</h4><p>开发团队包含了各种专业人员，只有他们才能在每个Sprint中提交可交付的产品增量。开发团队具有下列特点：</p>
+<ul>
+<li>自我组织和领导，开发团队自己决定选择产品待办列表项的数量，不受开发团队外的人员干预（Scrum主管也不行）。</li>
+<li>开发团队拥有开发产品的所有技能，不依靠外部人员参与。</li>
+<li>开发团队里面没有上下层关系，所有人都拥有一样的头衔，都叫做开发人员。</li>
+<li>开发团队里面没有子团队，没有分测试人员或者业务人员等等。</li>
+<li>所有的责任都由整个开发团队承担。</li>
+</ul>
+<p>开发团队的规模一般是3~9个人，不包括产品负责人和Scrum主管（除非他们也参与和执行Sprint待办列表中的开发工作）。人员过少会导致缺少互动和技能不够，过多会增加沟通成本和管理成本。</p>
+<h4 id="Scrum主管"><a href="#Scrum主管" class="headerlink" title="Scrum主管"></a>Scrum主管</h4><p>Scrum主管要确保Scrum团队遵循Scrum的理论、实践和规则。Scrum主管是一个服务型领导。</p>
+<p>Scrum主管服务于产品负责人：</p>
+<ul>
+<li>找到有效管理产品待办列表的技巧。</li>
+<li>帮助Scrum团队理解为何需要清晰且简明的产品待办列表项。</li>
+<li>确保产品负责人懂得如何来安排产品待办列表使其达到最大化价值。</li>
+<li>按要求或需要引导Scrum事件。</li>
+</ul>
+<p>Scrum主管服务与开发团队：</p>
+<ul>
+<li>在自组织和跨职能方面给予开发团队指导。</li>
+<li>帮助开发团队创造高价值的产品。</li>
+<li>移除开发团队工作进展中的障碍。</li>
+<li>按要求或需要引导Scrum事件。</li>
+<li>在Scrum还未完全采纳和理解的组织环境中指导开发团队。</li>
+</ul>
+<p>Scrum主管服务于组织：</p>
+<ul>
+<li>带领并指导组织采纳Scrum。</li>
+<li>在组织范围内规划Scrum的实施。</li>
+<li>帮助员工和利益攸关者理解并实施Scrum和经验产品开发。</li>
+<li>引发能够提升Scrum团队生产效率的改变。</li>
+<li>与其他Scrum主管一起工作,增加组织中Scrum应用的有效性。</li>
+</ul>
+<h4 id="The-Sprint"><a href="#The-Sprint" class="headerlink" title="The Sprint"></a>The Sprint</h4><p>Sprint是Scrum的核心，该事件持续时间为一个月以内，每个Sprint都可以被视为一个项目，在这段时间内，构建一个可发布的产品增量。在整个开发过程中，Sprint的时间长度通常保持一致，一个Sprint的结束，新的Sprint立即开始。只有产品负责人才有取消 Sprint的权力。</p>
+<p>Sprint由Sprint计划会议、每日Scrum站会、开发工作、 Sprint评审会议和Sprint回顾会议构成。</p>
+<h4 id="Sprint计划会议"><a href="#Sprint计划会议" class="headerlink" title="Sprint计划会议"></a>Sprint计划会议</h4><p>Sprint中要做的工作在Sprint计划会议中来做计划。这份工作计划是由整个Scrum团队共同协作完成的。Sprint计划会议是限时的,以一个月的Sprint来说最多8小时为上限。</p>
+<ul>
+<li>Scrum主管确保会议顺利举行以及控制会议的时间进展。</li>
+<li>产品负责人讲解此次Sprint的目标以及所需要完成的<code>产品待办列表项</code>。</li>
+<li>开发团队自己决定选择产品待办列表项的数量，只有开发团队可以评估接下来的Sprint可以完成什么工作。</li>
+<li>开发团队需要为选择完的产品待办列表制定目标和计划。</li>
+<li>选出的产品列表项以及对产品列表项的目标和计划构成了此次的<code>Sprint待办列表</code>。</li>
+<li>会议最后，需要规划Sprint最初几天需要做的工作，通常以一天或更少为一个单位。开发团队自组织地领取Sprint待办产品列表中的工作，产品负责人能够帮助解释清楚所选定的产品待办列表项。</li>
+<li>会议结束时，开发团队应该能够向产品负责人和Scrum主管解释他们将如何以自组织团队的形式完成Sprint目标并开发出预期的产品增量。</li>
+</ul>
+<h4 id="每日Scrum站会"><a href="#每日Scrum站会" class="headerlink" title="每日Scrum站会"></a>每日Scrum站会</h4><p>每次站会固定在15分钟内，让各个开发人员说明昨天工作成果，今天工作计划，以及工作中遇到的障碍。站会可以让开发人员了解当前Sprint的进度，及时发现问题，调整工作计划。Scrum主管需要控制时间在15分钟内，并且只有开发团队成员才能参加，但是会议由开发团队自己负责召开。</p>
+<h4 id="Sprint评审会议"><a href="#Sprint评审会议" class="headerlink" title="Sprint评审会议"></a>Sprint评审会议</h4><ul>
+<li>Sprint评审会议是在Sprint快结束时举行。</li>
+<li>目的是进行产品增量的演示来获取反馈，调整产品待办列表。</li>
+<li>由Scrum团队和利益相关者协同讨论这次Sprint中所完成的工作。</li>
+<li>对于长度为一个月的Sprint来说，评审会议的限时为4小时。</li>
+<li>Scrum主管确保会议正常举行，并控制会议时间进度。</li>
+</ul>
+<p>Sprint评审会议内容：</p>
+<ul>
+<li>产品负责人邀请Scrum团队和主要利益相关者参加会议。</li>
+<li>产品负责人说明产品待办列表项完成进度和情况。</li>
+<li>开发团队讨论Sprint期间哪些工作做的好，遇到什么问题以及如何解决的。</li>
+<li>开发团队演示已完成的工作并解答关于增量的问题。</li>
+<li>参会的所有人就下一步工作进行探讨。</li>
+</ul>
+<h4 id="Sprint回顾会议"><a href="#Sprint回顾会议" class="headerlink" title="Sprint回顾会议"></a>Sprint回顾会议</h4><ul>
+<li>Sprint回顾会议发生在Sprint评审会议结束之后，下个Sprint计划会议之前。</li>
+<li>参会人员仅是Scrum团队，目的是Scrum团队进行自我总结并在下一个Sprint中改进不足。</li>
+<li>对于长度为一个月的Sprint来说,会议的限时为3小时。</li>
+<li>Scrum主管确保会议正常举行，并控制会议时间进度。</li>
+</ul>
+<p>Sprint回顾会议内容：</p>
+<ul>
+<li>讨论上一个Sprint中关于人、关系、过程和工具的情况如何。</li>
+<li>找出值得鼓励的地方以及需要改进的方面，进而优化团队工作方式。</li>
+</ul>
+<h4 id="产品待办列表"><a href="#产品待办列表" class="headerlink" title="产品待办列表"></a>产品待办列表</h4><p>产品待办列表是一份关于产品需求的有序列表。产品负责人是唯一一个负责管理产品待办列表的人。</p>
+<h4 id="Sprint待办列表"><a href="#Sprint待办列表" class="headerlink" title="Sprint待办列表"></a>Sprint待办列表</h4><p>Sprint待办列表是一组为当前Sprint选出的产品待办列表项，同时加上交付产品增量和实现Sprint目标的计划。在Sprint期间，只有开发团队可以改变Sprint待办列表。</p>
+<h4 id="产品增量"><a href="#产品增量" class="headerlink" title="产品增量"></a>产品增量</h4><p>增量是一个Sprint完成的所有产品待办列表项的总和,以及之前所有Sprint所产生的增量的价值总和。在Sprint的最后，新的增量必须是可用的。</p>
+<p>参考资料<br><a href="http://www.scrumguides.org/scrum-guide.html" target="_blank" rel="noopener">ScrumGuides.org</a><br><a href="http://www.scrumguides.org/docs/scrumguide/v2016/2016-Scrum-Guide-US.pdf#zoom=100" target="_blank" rel="noopener">2016-Scrum-Guide-US</a><br><a href="http://www.scrumguides.org/docs/scrumguide/v2016/2016-Scrum-Guide-Chinese-Simplified.pdf#zoom=100" target="_blank" rel="noopener">2016-Scrum-Guide-Chinese-Simplified</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <!-- %- partial('share/index', { post: post }) % -->
+            <!-- 
+    
+ -->
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/08/15/googleSearch/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    如何使用Google搜索引擎
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/07/29/sassAndGulp/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Sass架构设计以及基于Gulp实现自动化构建</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+<!-- 
+    
+    <section id="comments">
+    
+    </section>
+
+ -->
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/08/face-detection/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ComputerVision/face_detection.png)" alt="使用OpenCV进行人脸检测" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Computer-Vision/">Computer Vision</a></p>
+                            <p class="item-title"><a href="/2018/02/08/face-detection/" class="title">使用OpenCV进行人脸检测</a></p>
+                            <p class="item-date"><time datetime="2018-02-08T09:54:15.000Z" itemprop="datePublished">2018-02-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/18/kMeans/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml_map.png)" alt="K-means聚类算法" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/18/kMeans/" class="title">K-means聚类算法</a></p>
+                            <p class="item-date"><time datetime="2017-12-18T10:18:35.000Z" itemprop="datePublished">2017-12-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/09/machinelearning/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml.jpg)" alt="什么是机器学习" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/09/machinelearning/" class="title">什么是机器学习</a></p>
+                            <p class="item-date"><time datetime="2017-12-09T14:41:12.000Z" itemprop="datePublished">2017-12-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/03/pythonVirtualEnv/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Python/python.jpg)" alt="Python虚拟环境" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/12/03/pythonVirtualEnv/" class="title">Python虚拟环境</a></p>
+                            <p class="item-date"><time datetime="2017-12-03T11:59:57.000Z" itemprop="datePublished">2017-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/01/Ionic3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Mobile/ionic3.jpg)" alt="使用Ionic3进行移动开发" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Mobile/">Mobile</a></p>
+                            <p class="item-title"><a href="/2017/12/01/Ionic3/" class="title">使用Ionic3进行移动开发</a></p>
+                            <p class="item-date"><time datetime="2017-11-30T16:15:25.000Z" itemprop="datePublished">2017-12-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Agile/">Agile</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CI/">CI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CMS/">CMS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer Vision</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Databases/">Databases</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Document/">Document</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Editor/">Editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front End</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Google/">Google</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hibernate/">Hibernate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile/">Mobile</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Testing/">Testing</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bower/">Bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dashboard/">Dashboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Http/">Http</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hybrid-App/">Hybrid App</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JMS/">JMS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSHint/">JSHint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Joomla/">Joomla</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kanban/">Kanban</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LAMP/">LAMP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NGINX/">NGINX</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/">OpenCV</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RBAC/">RBAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SASS/">SASS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sahi/">Sahi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/">Scrum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/">Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Framework/">Spring Framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Video/">Video</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 Garfield Dai<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a><br>
+            <a href="http://www.miitbeian.gov.cn/">粤ICP备17035589号</a>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

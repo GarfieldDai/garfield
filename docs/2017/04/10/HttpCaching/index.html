@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>Http 缓存 | Garfield Dai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="目的理解什么是 Http 缓存。">
+<meta name="keywords" content="Http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Http 缓存">
+<meta property="og:url" content="http://garfieldwiki.com/2017/04/10/HttpCaching/index.html">
+<meta property="og:site_name" content="Garfield Dai">
+<meta property="og:description" content="目的理解什么是 Http 缓存。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://garfieldwiki.com/images/Network/Http/Http.jpg">
+<meta property="og:updated_time" content="2019-03-24T02:03:36.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Http 缓存">
+<meta name="twitter:description" content="目的理解什么是 Http 缓存。">
+<meta name="twitter:image" content="http://garfieldwiki.com/images/Network/Http/Http.jpg">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Garfield Dai</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/thumbnail.png">
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/thumbnail.png">
+            <h2 id="name">Garfield Dai</h2>
+            <h3 id="title">Full-Stack Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://cn.linkedin.com/in/garfielddai">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                48
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                31
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/GarfieldDai" target="_blank" title="github" class="tooltip">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-HttpCaching" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Http 缓存
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/10/HttpCaching/">
+            <time datetime="2017-04-10T03:14:00.000Z" itemprop="datePublished">2017-04-10</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Network/">Network</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Http/">Http</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="/images/Network/Http/Http.jpg" alt></p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>理解什么是 Http 缓存。</p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在 Web 应用开发中，用户对网页的响应速度要求极高。如果每次刷新页面都要从服务器里面重新拿网页资源（HTML, CSS, Javascript, Image, Video, etc），不仅会影响网页的响应速度，而且也很占用服务器宝贵的带宽资源。</p>
+<p>为了解决上述的问题，可以设置 Http 缓存（Http Caching）。在一定的条件范围内，用户重新访问相同的网页资源，只需在浏览器缓存中提取即可，并不需要从服务器中重新获取资源。<br><img src="/images/Network/Http/Cache/HttpCaching01.jpg" alt><br>目前所有的现代浏览器都实现了 Http 缓存，你只需要在服务器响应（Response）中设置 Http 协议头 ( Http header) 的参数，确保服务器正确的返回响应的参数。<br><img src="/images/Network/Http/Cache/HttpCaching02.jpg" alt><br>在设置缓存的同时，也要注意怎么处理缓存过期，避免用户看到过期的内容。</p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>有以下两种设置方式，HTTP cache headers 和 Conditional requests，它们的区别是后者加载资源的时候，会和服务器进行一次请求，如果请求的资源有更新，就重新去服务器加载资源，否则从本地缓存中加载资源，而前者不用和服务器进行请求，只是告诉浏览器怎么加载本地缓存。</p>
+<h3 id="HTTP-cache-headers"><a href="#HTTP-cache-headers" class="headerlink" title="HTTP cache headers:"></a>HTTP cache headers:</h3><p>Http 协议头有两个重要的参数设置 Cache-Control 和 Expires 。</p>
+<ol>
+<li><p>Cache-Control ：在设置 Http 缓存的时候，一定要在协议头里面加上 Cache-Control 属性，否则对其他协议头（caching headers）的设置都不会生效。</p>
+<p><strong> Public </strong> ： 表示不仅在用户浏览器端进行缓存，而且在中转代理服务器中（intermediate proxies）也进行缓存。<br><code>Cache-Control:public</code></p>
+<p><strong> Privete </strong> ： 表示只在用户浏览器端进行缓存，一般涉及到用户个人隐私数据的时候使用。<br><code>Cache-Control:private</code></p>
+<p><strong> max-age </strong> : 设置缓存时间长度，单位为秒。<br><code>Cache-Control:public, max-age=30</code><br>当前设置是30秒后过期，需要重新去服务器请求资源。</p>
+</li>
+<li><p>Expires ： 这个属性是给缓存指定一个过期的时间点，如果超过当前时间点，需要重新去服务器加载资源。如果 Expires 和 max-age 同时设置，max-age 的优先级更高。<br><code>Cache-Control:public</code><br><code>Expires: Mon, 25 Jun 2012 21:31:12 GMT</code></p>
+</li>
+</ol>
+<p><img src="/images/Network/Http/Cache/HttpCaching04.jpg" alt></p>
+<h3 id="Conditional-requests"><a href="#Conditional-requests" class="headerlink" title="Conditional requests :"></a>Conditional requests :</h3><p>Conditional requests 其实就是每次加载资源的时候，都会去服务器询问当前资源是否有更新，如果有，就返回最新的资源。如果没有，就返回 Http 状态码304。虽然每次加载资源都需要请求服务器，但是只要资源没有更新，返回的 response body 是空的，这样也就减轻的带宽的压力，同时也避免用户浏览器缓存更新不及时，看到过期内容的情况。<br><img src="/images/Network/Http/Cache/HttpCaching03.jpg" alt></p>
+<ol>
+<li><p>Time-based : 基于时间的设置<br><strong> Last-Modified </strong> ：在第一次加载资源的时候，给当前资源标记最新的时间戳。<br><code>Cache-Control:public, max-age=30</code><br><code>Last-Modified: Mon, 03 Jan 2011 17:45:57 GMT</code></p>
+<p>重新加载资源的时候，浏览器自动会发送缓存资源的时间戳给服务器。<br><code>If-Modified-Since: Mon, 03 Jan 2011 17:45:57 GMT</code><br>如果在 <em> Mon, 03 Jan 2011 17:45:57 GMT </em> 之前，资源都没有更新，服务器会返回 304 状态码和空的响应体（empty response body）。</p>
+</li>
+<li><p>Content-based ：基于内容的设置<br><strong> ETag </strong> (or Entity Tag) ：类似 Last-Modified ，但是它的值是一组字符串（类似 MD5 hash），其实就是给服务器进行校验两个文件是否相同的文件校验码（checksum）。<br><code>Cache-Control:public, max-age=30</code><br><code>ETag: &quot;15f0fff99ed5aae4edffdd6496d7131f&quot;</code></p>
+<p>重新加载资源的时候，浏览器自动会发送文件校验码给服务器。<br><code>If-None-Match: &quot;15f0fff99ed5aae4edffdd6496d7131f&quot;</code><br>服务器检测到两个校验码相同，表示当前资源没有更新，服务器会返回 304 状态码和空的响应体（empty response body）。</p>
+</li>
+</ol>
+<p><img src="/images/Network/Http/Cache/HttpCaching05.jpg" alt></p>
+<h2 id="实践参考"><a href="#实践参考" class="headerlink" title="实践参考"></a>实践参考</h2><h3 id="静态资源缓存"><a href="#静态资源缓存" class="headerlink" title="静态资源缓存"></a>静态资源缓存</h3><p>在网站应用中，如果某些资源（Image，CSS，JavaScript，etc）在可预见的未来不会被更新，建议将 max-age 设置为1年（1年大概有31536000秒） ，并且设置1年后的 Expires 时间点。不建议把时间设置超过1年，参考<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9" target="_blank" rel="noopener">RFC</a>。<br><code>Cache-Control:public; max-age=31536000</code><br><code>Expires: Mon, 25 Jun 2013 21:31:12 GMT</code></p>
+<h3 id="停用缓存"><a href="#停用缓存" class="headerlink" title="停用缓存"></a>停用缓存</h3><p>对于一些资源需要每次都从服务器加载的，或者一些敏感的个人数据不方便缓存的，建议明确的设置缓存停用。因为基于各种不同浏览器的内部实现，很可能会自动帮你做了缓存处理。<br><code>Cache-Control:no-cache, no-store, must-revalidate</code></p>
+<h3 id="ETag-VS-Cache-control-Header-or-Expires"><a href="#ETag-VS-Cache-control-Header-or-Expires" class="headerlink" title="ETag VS Cache-control Header or Expires"></a>ETag VS Cache-control Header or Expires</h3><p>如果仅仅设置Etag，每次页面刷新都会重新对服务器进行请求。ETag 仅仅是为了校验文件是否更新。<br><code>ETag: &quot;15f0fff99ed5aae4edffdd6496d7131f&quot;</code></p>
+<p>如果设置了max-age，那么在有效期30秒内，浏览器都只从本地缓存中加载资源，不会去请求服务器。<br><code>Cache-Control:public, max-age=30</code><br><code>ETag: &quot;15f0fff99ed5aae4edffdd6496d7131f&quot;</code></p>
+<h3 id="组合实现"><a href="#组合实现" class="headerlink" title="组合实现"></a>组合实现</h3><p>假设一个情况，一个 CSS 文件你设置了缓存时间为24小时 (max-age=86400)，但是你发现里面有问题，马上进行了修改并且上线，但是客户端并不能马上进行缓存更新，这种情况怎么办？如何能够做到客户端能够长时间的缓存，但是又能够马上进行缓存的更新呢？</p>
+<p><img src="/images/Network/Http/Cache/HttpCaching06.png" alt></p>
+<p>你可以通过修改 URL 强制用户重新加载资源，类似Etage文件校验码的原理，你可以把校验码放在文件名中，比如 style.x234dff.css。HTML 里面 Cache-Control 设置为 “no-cache”，目的就是让浏览器每次都到服务器拿到最新的代码。通过组合 Etage，Cache-Control 和 URLs，不但能够拥有长时间的缓存，又能够满足对文件修改并及时生效的需求。</p>
+<p>参考资料<br><a href="https://devcenter.heroku.com/articles/increasing-application-performance-with-http-cache-headers" target="_blank" rel="noopener">Increasing Application Performance with HTTP Cache Headers</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching" target="_blank" rel="noopener">Mozilla : HTTP caching</a><br><a href="https://developers.google.cn/web/fundamentals/performance/optimizing-content-efficiency/http-caching" target="_blank" rel="noopener">Google : HTTP Caching</a><br><a href="https://betterexplained.com/articles/how-to-optimize-your-site-with-http-caching/" target="_blank" rel="noopener">How To Optimize Your Site With HTTP Caching</a><br><a href="http://stackoverflow.com/questions/499966/etag-vs-header-expires" target="_blank" rel="noopener">ETag vs Header Expires</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <!-- %- partial('share/index', { post: post }) % -->
+            <!-- 
+    
+ -->
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/04/13/SassEntrance/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Sass 快速入门
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/03/23/SahiEntrance/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Sahi 快速入门</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+<!-- 
+    
+    <section id="comments">
+    
+    </section>
+
+ -->
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/08/face-detection/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ComputerVision/face_detection.png)" alt="使用OpenCV进行人脸检测" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Computer-Vision/">Computer Vision</a></p>
+                            <p class="item-title"><a href="/2018/02/08/face-detection/" class="title">使用OpenCV进行人脸检测</a></p>
+                            <p class="item-date"><time datetime="2018-02-08T09:54:15.000Z" itemprop="datePublished">2018-02-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/18/kMeans/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml_map.png)" alt="K-means聚类算法" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/18/kMeans/" class="title">K-means聚类算法</a></p>
+                            <p class="item-date"><time datetime="2017-12-18T10:18:35.000Z" itemprop="datePublished">2017-12-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/09/machinelearning/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml.jpg)" alt="什么是机器学习" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/09/machinelearning/" class="title">什么是机器学习</a></p>
+                            <p class="item-date"><time datetime="2017-12-09T14:41:12.000Z" itemprop="datePublished">2017-12-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/03/pythonVirtualEnv/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Python/python.jpg)" alt="Python虚拟环境" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/12/03/pythonVirtualEnv/" class="title">Python虚拟环境</a></p>
+                            <p class="item-date"><time datetime="2017-12-03T11:59:57.000Z" itemprop="datePublished">2017-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/01/Ionic3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Mobile/ionic3.jpg)" alt="使用Ionic3进行移动开发" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Mobile/">Mobile</a></p>
+                            <p class="item-title"><a href="/2017/12/01/Ionic3/" class="title">使用Ionic3进行移动开发</a></p>
+                            <p class="item-date"><time datetime="2017-11-30T16:15:25.000Z" itemprop="datePublished">2017-12-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Agile/">Agile</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CI/">CI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CMS/">CMS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer Vision</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Databases/">Databases</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Document/">Document</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Editor/">Editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front End</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Google/">Google</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hibernate/">Hibernate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile/">Mobile</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Testing/">Testing</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bower/">Bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dashboard/">Dashboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Http/">Http</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hybrid-App/">Hybrid App</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JMS/">JMS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSHint/">JSHint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Joomla/">Joomla</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kanban/">Kanban</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LAMP/">LAMP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NGINX/">NGINX</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/">OpenCV</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RBAC/">RBAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SASS/">SASS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sahi/">Sahi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/">Scrum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/">Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Framework/">Spring Framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Video/">Video</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 Garfield Dai<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a><br>
+            <a href="http://www.miitbeian.gov.cn/">粤ICP备17035589号</a>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

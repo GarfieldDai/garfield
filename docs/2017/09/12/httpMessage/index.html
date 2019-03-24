@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>HTTP Message | Garfield Dai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="目的讲解HTTP/1.1报文格式，简单介绍HTTP协议版本的演变。">
+<meta name="keywords" content="Http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP Message">
+<meta property="og:url" content="http://garfieldwiki.com/2017/09/12/httpMessage/index.html">
+<meta property="og:site_name" content="Garfield Dai">
+<meta property="og:description" content="目的讲解HTTP/1.1报文格式，简单介绍HTTP协议版本的演变。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://garfieldwiki.com/images/Network/Http/Message/fetchMessage.png">
+<meta property="og:updated_time" content="2019-03-24T02:03:36.686Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP Message">
+<meta name="twitter:description" content="目的讲解HTTP/1.1报文格式，简单介绍HTTP协议版本的演变。">
+<meta name="twitter:image" content="http://garfieldwiki.com/images/Network/Http/Message/fetchMessage.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Garfield Dai</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/thumbnail.png">
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/thumbnail.png">
+            <h2 id="name">Garfield Dai</h2>
+            <h3 id="title">Full-Stack Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://cn.linkedin.com/in/garfielddai">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                48
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                31
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/GarfieldDai" target="_blank" title="github" class="tooltip">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-httpMessage" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            HTTP Message
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/09/12/httpMessage/">
+            <time datetime="2017-09-12T01:53:24.000Z" itemprop="datePublished">2017-09-12</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Network/">Network</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Http/">Http</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="/images/Network/Http/Message/fetchMessage.png" alt></p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>讲解HTTP/1.1报文格式，简单介绍HTTP协议版本的演变。</p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>HTTP(HyperText Transfer Protocol)：超文本传输协议，该协议定义了浏览器怎么向服务器请求文档，以及服务器怎么把文档传送给客户端，该协议由Tim Berners-Lee在1989-1991年制定，使用TCP协议进行数据传输。</p>
+<p><img src="/images/Network/Http/Message/httpLayer.png" alt></p>
+<h2 id="HTTP请求过程"><a href="#HTTP请求过程" class="headerlink" title="HTTP请求过程"></a>HTTP请求过程</h2><p>浏览器是怎么向服务器请求资源？</p>
+<ol>
+<li>浏览器从URL中解析出服务器的主机名。</li>
+<li>浏览器将服务器的主机名通过DNS域名解析，转换成服务器的IP地址。</li>
+<li>浏览器将端口号从URL中解析出来，如果没有，就默认为80端口号。</li>
+<li>浏览器建立一条与Web服务器的TCP的连接。</li>
+<li>浏览器向服务器发送一条HTTP请求报文。</li>
+<li>服务器向浏览器回送一条HTTP响应报文。</li>
+<li>关闭连接，浏览器解析渲染文档给用户。</li>
+</ol>
+<h2 id="HTTP报文-Message"><a href="#HTTP报文-Message" class="headerlink" title="HTTP报文(Message)"></a>HTTP报文(Message)</h2><p>HTTP/1.1以及更久之前都使用纯文本的报文，可以直接阅读。HTTP有两种报文格式，分别是request message请求报文和response message响应报文。</p>
+<p>两种报文结构类似，由以下组成：</p>
+<ul>
+<li>起始行(Start-Line)</li>
+<li>首部(HTTP headers)</li>
+<li>空行(Empty-Line)：HTTP首部总是应该以一个空行CRLF结束，即使没有首部和主体也是如此。</li>
+<li>主体(Body)<br><img src="/images/Network/Http/Message/HTTPMsgStructure.png" alt></li>
+</ul>
+<h2 id="HTTP-Request"><a href="#HTTP-Request" class="headerlink" title="HTTP Request"></a>HTTP Request</h2><p><img src="/images/Network/Http/Message/request.png" alt="Request Message"></p>
+<h4 id="起始行-Start-line"><a href="#起始行-Start-line" class="headerlink" title="起始行 Start line"></a>起始行 Start line</h4><p>HTTP请求报文是从客户端发往服务器，起始行有三个字段组成，所有字段使用一个空格进行隔开：</p>
+<ol>
+<li>请求方法(Method)：表示请求服务器的方式，常用的有GET和POST两种方法。如果基于RESTful的架构设计，GET用来获取资源，POST用来新建资源或更新资源，PUT用来更新资源，DELETE用来删除资源。</li>
+<li>资源路径(Path)：通常是一个URL，可以是相对路径、绝对路径。可以在路径后面添加查询参数，一般用于表单提交或者异步请求。</li>
+<li>HTTP版本(Version of the protocol)：显示当前使用的HTTP版本，通常是HTTP/1.1。</li>
+</ol>
+<h4 id="首部-Headers"><a href="#首部-Headers" class="headerlink" title="首部 Headers"></a>首部 Headers</h4><p>每个首部都包含一个名字，使用英文冒号<code>:</code>进行隔开。请求报文有三类首部：</p>
+<ul>
+<li>请求首部(Request Headers)：提供有关请求的信息。</li>
+<li>通用首部(General Headers)：既可出现在请求报文，也可出现在响应报文。可以在客户端或者服务器之间提供一些通用的功能。</li>
+<li>实体首部(Entity Headers)：描述主体的长度和内容，或者资源自身。<br><img src="/images/Network/Http/Message/requestHeaders.png" alt></li>
+</ul>
+<h4 id="主体-Body"><a href="#主体-Body" class="headerlink" title="主体 Body"></a>主体 Body</h4><p>主体放置着需要发送给服务器的信息，并不是所有的请求报文都有主体，如GET、HEAD、DELETE和OPTIONS就没有。POST和PUT就有主体。主体信息在浏览器上对用户不可见，一般账户登录的信息都是放在主体里面发送，表单提交默认使用POST。</p>
+<h2 id="HTTP-Response"><a href="#HTTP-Response" class="headerlink" title="HTTP Response"></a>HTTP Response</h2><p><img src="/images/Network/Http/Message/response.png" alt="Response Message"></p>
+<h4 id="起始行-Start-line-1"><a href="#起始行-Start-line-1" class="headerlink" title="起始行 Start line"></a>起始行 Start line</h4><p>HTTP响应报文是从服务器发往客户端，起始行也有三个字段组成，所有字段使用一个空格进行隔开：</p>
+<ol>
+<li>HTTP版本(Version of the protocol)：显示当前使用的HTTP版本，通常是HTTP/1.1。</li>
+<li>状态码(Status Code)：表示当前请求成功或者失败。常见有200，404和302。<ul>
+<li>100~199 信息提示</li>
+<li>200~299 成功</li>
+<li>300~399 重定向</li>
+<li>400~499 客户端错误</li>
+<li>500~599 服务器错误</li>
+</ul>
+</li>
+<li>状态信息(Status Message)：一段简短的描述状态码意义的文本。<br>如<code>HTTP/1.1 404 Not Found</code>表示找不到资源。</li>
+</ol>
+<h4 id="首部-Headers-1"><a href="#首部-Headers-1" class="headerlink" title="首部 Headers"></a>首部 Headers</h4><p>响应报文也有三类首部：</p>
+<ul>
+<li>响应首部(Response Headers)：提供有关响应的信息。</li>
+<li>通用首部(General Headers)：同上。</li>
+<li>实体首部(Entity Headers)：同上。<br><img src="/images/Network/Http/Message/responseHeaders.png" alt></li>
+</ul>
+<h4 id="主体-Body-1"><a href="#主体-Body-1" class="headerlink" title="主体 Body"></a>主体 Body</h4><p>主体放着服务器返回给客户端的信息，并不是所有的响应报文都有主体，如状态码是201，204就没有。</p>
+<h2 id="HTTP协议版本的演变"><a href="#HTTP协议版本的演变" class="headerlink" title="HTTP协议版本的演变"></a>HTTP协议版本的演变</h2><p>HTTP到目前为止经历了四次版本演变。</p>
+<h4 id="HTTP-0-9"><a href="#HTTP-0-9" class="headerlink" title="HTTP/0.9"></a>HTTP/0.9</h4><p>该版本非常简单，request只有一行，只有GET请求，后面跟着资源路径，只能传输HTML文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /mypage.html</span><br></pre></td></tr></table></figure></p>
+<p>response也非常简单，只有HTML内容本身。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;HTML&gt;</span><br><span class="line">A very simple HTML page</span><br><span class="line">&lt;/HTML&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a>HTTP/1.0</h4><p>增加了协议版本号(Version of the Protocol)，状态码(Status Code)，状态信息(Status Message)，HTTP头部(header)和内容类型(Content-Type)，可以传输其他类型的文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /mypage.html HTTP/1.0</span><br><span class="line">User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)</span><br><span class="line"></span><br><span class="line">200 OK</span><br><span class="line">Date: Tue, 15 Nov 1994 08:12:31 GMT</span><br><span class="line">Server: CERN/3.0 libwww/2.17</span><br><span class="line">Content-Type: text/html</span><br><span class="line">&lt;HTML&gt;</span><br><span class="line">A page with an image</span><br><span class="line">  &lt;IMG SRC=&quot;/myimage.gif&quot;&gt;</span><br><span class="line">&lt;/HTML&gt;</span><br></pre></td></tr></table></figure></p>
+<p>请求gif格式的图片<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /myimage.gif HTTP/1.0</span><br><span class="line">User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)</span><br><span class="line"></span><br><span class="line">200 OK</span><br><span class="line">Date: Tue, 15 Nov 1994 08:12:32 GMT</span><br><span class="line">Server: CERN/3.0 libwww/2.17</span><br><span class="line">Content-Type: text/gif</span><br><span class="line">(image content)</span><br></pre></td></tr></table></figure></p>
+<h4 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a>HTTP/1.1</h4><p>初次标准化的HTTP协议，发布于1997年1月，仅仅在HTTP/1.0发布后几个月。对比之前的版本，该版本有了很多新的特性。该协议经过两个修订，一直沿用到至今20年(本博文写于2017年)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">GET /en-US/docs/Glossary/Simple_header HTTP/1.1</span><br><span class="line">Host: developer.mozilla.org</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: en-US,en;q=0.5</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Referer: https://developer.mozilla.org/en-US/docs/Glossary/Simple_header</span><br><span class="line"></span><br><span class="line">200 OK</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Date: Wed, 20 Jul 2016 10:55:30 GMT</span><br><span class="line">Etag: &quot;547fa7e369ef56031dd3bff2ace9fc0832eb251a&quot;</span><br><span class="line">Keep-Alive: timeout=5, max=1000</span><br><span class="line">Last-Modified: Tue, 19 Jul 2016 00:59:33 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Vary: Cookie, Accept-Encoding</span><br><span class="line"></span><br><span class="line">(content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">GET /static/img/header-background.png HTTP/1.1</span><br><span class="line">Host: developer.cdn.mozilla.net</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0</span><br><span class="line">Accept: */*</span><br><span class="line">Accept-Language: en-US,en;q=0.5</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Referer: https://developer.mozilla.org/en-US/docs/Glossary/Simple_header</span><br><span class="line"></span><br><span class="line">200 OK</span><br><span class="line">Age: 9578461</span><br><span class="line">Cache-Control: public, max-age=315360000</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Length: 3077</span><br><span class="line">Content-Type: image/png</span><br><span class="line">Date: Thu, 31 Mar 2016 13:34:46 GMT</span><br><span class="line">Last-Modified: Wed, 21 Oct 2015 18:27:50 GMT</span><br><span class="line">Server: Apache</span><br><span class="line"></span><br><span class="line">(image content of 3077 bytes)</span><br></pre></td></tr></table></figure></p>
+<h4 id="HTTP-2-0"><a href="#HTTP-2-0" class="headerlink" title="HTTP/2.0"></a>HTTP/2.0</h4><p>经过了这么多年的发展，网页已经变得非常复杂，大量的多媒体应用，脚本交互和数据传输，这种富客户端的状况有增无减，使得应用性能瓶颈日益明显。为了应对这种状况，HTTP/2.0协议于2015年5月正式发布，截止2017年5月，13.7%的前1000万名的网站支持HTTP/2.0。比起HTTP/1.1版本使用纯文本数据传输，2.0版本使用二进制格式进行数据传输。</p>
+<p>参考资料<br><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" target="_blank" rel="noopener">An overview of HTTP</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages" target="_blank" rel="noopener">HTTP Messages</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP" target="_blank" rel="noopener">Evolution of HTTP</a><br><a href="https://en.wikipedia.org/wiki/HTTP/2" target="_blank" rel="noopener">Wikipedia HTTP/2</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <!-- %- partial('share/index', { post: post }) % -->
+            <!-- 
+    
+ -->
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/09/13/opencv/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    OpenCV macOS 环境配置
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/09/10/tcpIpProtocal/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">计算机网络体系结构</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+<!-- 
+    
+    <section id="comments">
+    
+    </section>
+
+ -->
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/08/face-detection/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ComputerVision/face_detection.png)" alt="使用OpenCV进行人脸检测" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Computer-Vision/">Computer Vision</a></p>
+                            <p class="item-title"><a href="/2018/02/08/face-detection/" class="title">使用OpenCV进行人脸检测</a></p>
+                            <p class="item-date"><time datetime="2018-02-08T09:54:15.000Z" itemprop="datePublished">2018-02-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/18/kMeans/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml_map.png)" alt="K-means聚类算法" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/18/kMeans/" class="title">K-means聚类算法</a></p>
+                            <p class="item-date"><time datetime="2017-12-18T10:18:35.000Z" itemprop="datePublished">2017-12-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/09/machinelearning/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/ml/ml.jpg)" alt="什么是机器学习" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a></p>
+                            <p class="item-title"><a href="/2017/12/09/machinelearning/" class="title">什么是机器学习</a></p>
+                            <p class="item-date"><time datetime="2017-12-09T14:41:12.000Z" itemprop="datePublished">2017-12-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/03/pythonVirtualEnv/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Python/python.jpg)" alt="Python虚拟环境" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/12/03/pythonVirtualEnv/" class="title">Python虚拟环境</a></p>
+                            <p class="item-date"><time datetime="2017-12-03T11:59:57.000Z" itemprop="datePublished">2017-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/01/Ionic3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/Mobile/ionic3.jpg)" alt="使用Ionic3进行移动开发" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Mobile/">Mobile</a></p>
+                            <p class="item-title"><a href="/2017/12/01/Ionic3/" class="title">使用Ionic3进行移动开发</a></p>
+                            <p class="item-date"><time datetime="2017-11-30T16:15:25.000Z" itemprop="datePublished">2017-12-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Agile/">Agile</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CI/">CI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CMS/">CMS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer Vision</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Databases/">Databases</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Document/">Document</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Editor/">Editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front End</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Google/">Google</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hibernate/">Hibernate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mobile/">Mobile</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Testing/">Testing</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bower/">Bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dashboard/">Dashboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Http/">Http</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hybrid-App/">Hybrid App</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JMS/">JMS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSHint/">JSHint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Joomla/">Joomla</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kanban/">Kanban</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LAMP/">LAMP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NGINX/">NGINX</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenCV/">OpenCV</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RBAC/">RBAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SASS/">SASS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sahi/">Sahi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/">Scrum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/">Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Framework/">Spring Framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Video/">Video</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 Garfield Dai<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a><br>
+            <a href="http://www.miitbeian.gov.cn/">粤ICP备17035589号</a>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
