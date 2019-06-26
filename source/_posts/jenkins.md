@@ -1,11 +1,11 @@
 ---
 title: Jenkins安装以及如何使用Pipeline
 date: 2017-11-01 15:21:13
-categories: CI
+categories: DevOps
 tags: Jenkins
-thumbnail: "/images/CI/jenkins.png"
+thumbnail: "/images/DevOps/jenkins.png"
 ---
-![](/images/CI/jenkins.png)
+![](/images/DevOps/jenkins.png)
 
 ## 目的
 简单介绍如何部署Jenkins，讲解一下如何使用Pipeline，版本为Jenkins ver. 2.73.2。
@@ -44,7 +44,7 @@ $ docker run -d -p 49001:8080 -v $PWD/jenkins:/var/jenkins_home -t jenkins/jenki
 
 ## Pipeline
 Jenkins Pipeline简单的讲就是将项目的构建，测试和部署等相关的动作进行脚本化，然后让Jenkins自动执行相关的脚本命令。这里介绍如何使用`Jenkinsfile`文件让Jenkins自动化执行脚本，该脚本使用的语法格式为 [Pipeline Domain Specific Language (DSL) syntax](https://jenkins.io/doc/book/pipeline/syntax/)。
-![Pipeline Flow](/images/CI/pipeline_flow.png)
+![Pipeline Flow](/images/DevOps/pipeline_flow.png)
 `Jenkinsfile`放在项目的根目录，方便项目进行版本控制和跟踪，示例代码使用Maven管理项目。
 ```groovy
 pipeline {
